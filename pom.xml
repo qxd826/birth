@@ -9,13 +9,13 @@
     <!-- 父 module 打包为pom-->
     <packaging>pom</packaging>
 
-    <name>birth</name>
+    <name>birth1</name>
     <url>http://maven.apache.org</url>
 
     <!--包含的子module-->
     <modules>
         <module>birth.web</module>
-        <module>birth.service</module>
+        <module>birth.biz</module>
         <module>birth.dao</module>
         <module>birth.common</module>
     </modules>
