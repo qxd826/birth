@@ -57,19 +57,6 @@
             <pattern>${birth_log_pattern}</pattern>
         </encoder>
     </appender>
-    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="com.tqmall.common.util.log.DbNoConneInfoFilter" />
-        <file>${birth_log_root}/db.log</file>
-        <append>true</append>
-        <param name="datePattern" value=".yyyy-MM-dd" />
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${birth_log_bak}/db.%d{yyyy-MM-dd}.log</fileNamePattern>
-        </rollingPolicy>
-        <encoder>
-            <charset>${birth_log_charset}</charset>
-            <pattern>${birth_log_pattern}</pattern>
-        </encoder>
-    </appender>
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${birth_log_root}/error.log</file>
         <append>true</append>

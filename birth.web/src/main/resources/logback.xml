@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <configuration debug="false">
-    <property name="birth_log_pattern"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n" />
+    <property name="COMMON_PATTERN"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n" />
     <property name="LOG_CHARSET" value="UTF-8" />
 
     <!--
@@ -31,8 +31,8 @@
             <maxHistory>5</maxHistory>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -42,8 +42,8 @@
             <fileNamePattern>logs/common.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="CUS_ASSIGN" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -53,21 +53,8 @@
             <fileNamePattern>logs/customerAssign.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
-        </encoder>
-    </appender>
-    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="com.tqmall.common.util.log.DbNoConneInfoFilter" />
-        <file>logs/db.log</file>
-        <append>true</append>
-        <param name="datePattern" value=".yyyy-MM-dd" />
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/db.%d{yyyy-MM-dd}.log</fileNamePattern>
-        </rollingPolicy>
-        <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -80,8 +67,8 @@
             <level>ERROR</level>
         </filter>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="MONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -91,8 +78,8 @@
             <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="REMOTE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -102,8 +89,8 @@
             <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="SCHEDULE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -113,8 +100,8 @@
             <fileNamePattern>logs/schedule.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
     <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -124,11 +111,17 @@
             <fileNamePattern>/spring.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <charset>UTF-8</charset>
-            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
-
+    <!--工作台输出-->
+    <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>${LOG_CHARSET}</charset>
+            <pattern>${COMMON_PATTERN}</pattern>
+        </encoder>
+    </appender>
 
     <logger name="com.qxd">
         <level value="INFO" />
@@ -183,6 +176,7 @@
     <root>
         <level value="INFO" />
         <appender-ref ref="COMMON" />
+        <appender-ref ref = "CONSOLE" />
         <appender-ref ref="ERROR" />
     </root>
 
