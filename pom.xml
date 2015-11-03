@@ -9,7 +9,7 @@
     <!-- 父 module 打包为pom-->
     <packaging>pom</packaging>
 
-    <name>birth1</name>
+    <name>birth</name>
     <url>http://maven.apache.org</url>
 
     <!--包含的子module-->
