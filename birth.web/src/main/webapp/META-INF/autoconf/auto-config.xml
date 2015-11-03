@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="default">
+        <!--先读取*.properties文件 如果没值则取默认值-->
+        <property name="birth.app.root" default="${user.home}/"
+                  description="应用部署根目录"/>
+        <property name="birth.app.context" defaultValue="birth"
+                  description="应用的context name"/>
+        <!--log-->
+        <!--log根目录 /logs-->
+        <property name="birth.log.root" defaultValue="${birth.app.root}/logs"
+                  description="log文件目录"/>
+        <property name="birth.log.bak" defaultValue="${birth.app.root}/logs"
+                  description="log备份文件目录"/>
+        <property name="birth.log.level" defaultValue="INFO"
+                  description="log级别"/>
+        <property name="birth.log.pattern"
+                  defaultValue="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n"
+                  description="log格式"/>
+        <property name="birth.log.charset" defaultValue="UTF-8"
+                  description="log文件编码类型"/>
+
+    </group>
+    <!-- 应用相应的模版文件 生成对应的文件到 相应的目录 -->
+    <script>
+        <generate template="application.properties.vm" destfile="WEB-INF/application.properties"
+                  charset="UTF-8"/>
+        <generate template="logback.xml.vm" destfile="WEB-INF/classes/logback.xml"
+                  charset="UTF-8"/>
+    </script>
+</config>

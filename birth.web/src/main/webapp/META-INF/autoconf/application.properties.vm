@@ -1,0 +1,4 @@
+birth.app.root     = ${birth_app_root}
+birth.app.context  = ${birth_app_context}
+
+

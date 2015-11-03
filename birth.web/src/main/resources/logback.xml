@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration debug="false">
+    <property name="birth_log_pattern"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n" />
+    <property name="LOG_CHARSET" value="UTF-8" />
+
+    <!--
+        appender 包括
+        RollingFileAppender,滚动记录文件
+        FileAppender,记录文件
+        DBAppender,日志写入数据库
+        ConsoleAppender,控制台输出
+        等
+        也可以自定义(继承ch.qos.logback.core.AppenderBase )
+    -->
+    <appender name="CACHE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--存放地址-->
+        <file>logs/cache.log</file>
+        <!--追加模式-->
+        <append>true</append>
+        <!--有多种策略
+            rollingPolicy{TimeBasedRollingPolicy,FixedWindowRollingPolicy}
+            triggeringPolicy{SizeBasedTriggeringPolicy}
+        -->
+        <!--时间分包策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--分包时间到天(dd)所以默认是1天)-->
+            <fileNamePattern>logs/cache.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每个月滚动，且<maxHistory>是6，则只保存最近6个月的文件，
+            删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除。-->
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/common.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/common.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="CUS_ASSIGN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/customerAssign.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/customerAssign.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="DB" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="com.tqmall.common.util.log.DbNoConneInfoFilter" />
+        <file>logs/db.log</file>
+        <append>true</append>
+        <param name="datePattern" value=".yyyy-MM-dd" />
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/db.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/error.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="MONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/monitor.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="REMOTE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/remote.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="SCHEDULE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/schedule.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/schedule.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/spring.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/spring.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="com.qxd">
+        <level value="INFO" />
+        <appender-ref ref="COMMON" />
+    </logger>
+    <logger name="java.sql" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="DB" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="java.sql.ResultSet" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="DB" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="net.sf.ehcache">
+        <level value="ERROR" />
+    </logger>
+    <logger name="org.apache">
+        <level value="WARN" />
+    </logger>
+    <logger name="org.apache.velocity">
+        <level value="INFO" />
+    </logger>
+    <logger name="org.directwebremoting" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="REMOTE" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="org.mybatis.spring" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="SPRING" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="SPRING" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="org.springframework.security">
+        <level value="ERROR" />
+    </logger>
+    <logger name="org.springframework.scheduling" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="SCHEDULE" />
+        <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="org.mitre">
+        <level value="info" />
+    </logger>
+
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="COMMON" />
+        <appender-ref ref="ERROR" />
+    </root>
+
+</configuration>
