@@ -13,9 +13,10 @@ bin
 .DS_Store
 */test-output/**
 */target/**
-pom.xml
 *.log
-legend.ipr
-legend.iws
+*.txt
+*.sql
+birth.ipr
+birth.iws
 antx.properties
 rebel.xml
