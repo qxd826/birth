@@ -1,6 +1,7 @@
-package com.qxd.app.web;
+package com.qxd.birth.web.app;
 
-import common.Result;
+import com.qxd.birth.common.common.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,19 +9,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by xiangDong.qu on 15/10/26.
  */
-@RequestMapping("/web/login")
+@RequestMapping("/app/login")
 @Controller
+@Slf4j
 public class LoginController {
 
-    @ResponseBody
     @RequestMapping("/loginIn")
+    @ResponseBody
     public Result login() {
         return Result.wrapSuccessfulResult("true loginIn");
     }
 
     @RequestMapping("/loginOut")
     public String loginOut() {
-        return "loginOut";
+        return "index";
     }
-
 }

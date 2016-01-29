@@ -1,13 +1,14 @@
-package common;
+package com.qxd.birth.common.common;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * Created by xiangDong.qu on 15/10/26.
  * 返回结果
  */
 @EqualsAndHashCode
+@ToString
 public class Result<T> {
     /**
      * 消息码
@@ -22,7 +23,7 @@ public class Result<T> {
     /**
      * 错误信息
      */
-    private String errorMsg;
+    private String message;
 
     /**
      * 是否成功 标志
@@ -32,16 +33,16 @@ public class Result<T> {
     public Result() {
     }
 
-    public Result(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public Result(String message) {
+        this.message = message;
     }
 
     public String getErrorMsg() {
-        return errorMsg;
+        return message;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setErrorMsg(String message) {
+        this.message = message;
     }
 
     public T getData() {
@@ -75,11 +76,11 @@ public class Result<T> {
         return result;
     }
 
-/*    public static <T> Result<T> wrapErrorResult(LegendError error) {
+    public static <T> Result<T> wrapErrorResult(BirthError error) {
         Result<T> result = new Result();
         result.success = false;
         result.code = error.getCode();
-        result.errorMsg = error.getMessage();
+        result.message = error.getMessage();
         return result;
-    }*/
+    }
 }

@@ -8,30 +8,39 @@
     <display-name>Archetype Created Web Application</display-name>
     <!--spring 容器相关配置-->
     <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+    <!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
+    <!-- 一切皆是spring的bean -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/application-context.xml
-        </param-value>
+        <param-value>/WEB-INF/application-context.xml</param-value>
     </context-param>
+
     <!-- Creates the Spring Container shared by all Servlets and Filters -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
     <!--spring mvc配置-->
+    <!--这里我们配置了一个名字为spring的servelt
+    我们也可以改为任意名字,并且可以配置多个servlet,本质上就是web的一个servlet-->
     <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+        <!-- 可以自定义servlet.xml配置文件的位置和名称，默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-servlet.xml</param-value>
+        </init-param>
+        -->
     </servlet>
-
+    <!-- spring这个servlet 处理所有的请求-->
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- -->
+    <!-- 字符集过滤强制转码 -->
     <filter>
         <filter-name>SetCharacterEncoding</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -49,10 +58,10 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--测试 filter-->
+    <!--自定义filter 测试 filter-->
     <filter>
         <filter-name>BaseFilter</filter-name>
-        <filter-class>com.qxd.filter.TestFilter</filter-class>
+        <filter-class>com.qxd.birth.web.filter.TestFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>BaseFilter</filter-name>
@@ -63,10 +72,10 @@
     <!--error-page 的两种配置方法: 错误码,异常类型-->
     <error-page>
         <error-code>500</error-code>
-        <location>/index.jsp</location>
+        <location>/error.jsp</location>
     </error-page>
     <error-page>
         <exception-type>java.lang.NullPointerException</exception-type>
-        <location>/index.jsp</location>
+        <location>/error.jsp</location>
     </error-page>
 </web-app>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    <!--视图解析器 order越小最先匹配,可以配置多个,也可以单独配置-->
+    <!-- Resolve views based on string names -->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="1"/>
+    </bean>
+
+    <!--jsp视图的解析-->
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--viewClass指定了选择何种视图技术，这里使用JSTL技术-->
+        <property name="viewClass" value="com.qxd.birth.web.base.DefaultJstlView"/>
+        <!--注意这里的文件地址配置 要带/-->
+        <property name="prefix" value="/WEB-INF/views/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <!--freemarker 视图解析器-->
+    <bean id="freeMarkerViewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="requestContextAttribute" value="request"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <!--freemarker config  这个需要 spring－context-support包支持-->
+    <bean id="freemarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <!--这里的值都可以通过 properties文件 注入 例如${legend.project.version}-->
+        <property name="templateLoaderPath" value="/WEB-INF/views/ftl/"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="number_format">#.##</prop>
+                <prop key="classic_compatible">true</prop>
+
+                <!--<prop key="template_exception_handler">ignore</prop> -->
+            </props>
+        </property>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="BASE_PATH" value="/birth"/>
+                <entry key="UPYUN_PATH" value="还没有"/>
+            </map>
+        </property>
+    </bean>
+
+
+</beans>

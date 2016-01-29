@@ -1,4 +1,4 @@
-package common;
+package com.qxd.birth.common.common;
 
 /**
  * Created by xiangDong.qu on 15/10/26.

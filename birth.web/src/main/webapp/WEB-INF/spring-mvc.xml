@@ -2,11 +2,39 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    ">
+    <!--配置特定的servlet 映射-->
+    <mvc:view-controller path="/" view-name="index"/>
 
+    <mvc:annotation-driven ignore-default-model-on-redirect="true">
+        <mvc:message-converters register-defaults="true">
+            <!-- 将StringHttpMessageCOnverter的默认编码设为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <!-- @PageableDefault-->
+            <bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver"/>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+
+    <!--对静态资源的访问-->
+    <!-- 对静态资源文件的访问  方案一 （二选一） -->
+    <!--servlet在找页面时，走的是dispatcherServlet路线。找不到的时候会报404,加上这个默认的servlet时候，servlet在找不到的时候会去找静态的内容-->
+    <mvc:default-servlet-handler/>
+    <!-- 对静态资源文件的访问  方案二 （二选一）-->
+    <!-- 静态资源的位置映射 访问/resources/**的资源  就去 /resources下查找 . 可以配置多个<mvc:resources> -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!-- 上传文件 等复合操作-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="100000000"/>
+        <!-- 支持文件大小100m -->
+    </bean>
 </beans>
