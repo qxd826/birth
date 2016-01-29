@@ -4,5 +4,6 @@
     <title>testFtl</title>
 </head>
 <body>
-    <h1>hello i am a ftl file</h1>
+    <h1>Hello I am a ftl file</h1>
+    <h1>${author}</h1>
 </body>
