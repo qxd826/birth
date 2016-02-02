@@ -1,4 +1,12 @@
 birth.app.root     = ${birth_app_root}
 birth.app.context  = ${birth_app_context}
 
+master.birth.jdbc.driverClassName  = ${master_birth_jdbc_driverClassName}
+master.birth.jdbc.url              = ${master_birth_jdbc_url}
+master.birth.jdbc.username         = ${master_birth_jdbc_username}
+master.birth.jdbc.password         = ${master_birth_jdbc_password}
 
+slave.birth.jdbc.driverClassName  = ${slave_birth_jdbc_driverClassName}
+slave.birth.jdbc.url              = ${slave_birth_jdbc_url}
+slave.birth.jdbc.username         = ${slave_birth_jdbc_username}
+slave.birth.jdbc.password         = ${slave_birth_jdbc_password}

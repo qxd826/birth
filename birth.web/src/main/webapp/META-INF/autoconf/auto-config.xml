@@ -6,6 +6,24 @@
                   description="应用部署根目录"/>
         <property name="birth.app.context" defaultValue="birth"
                   description="应用的context name"/>
+        <!--主数据库-->
+        <property name="master.jdbc.driverClassName" defaultValue="com.mysql.jdbc.Driver"
+                  description="数据库驱动类"/>
+        <property name="master.jdbc.url " defaultValue="birth"
+                  description="数据库地址"/>
+        <property name="master.jdbc.username" defaultValue="birth"
+                  description="数据库连接用户名"/>
+        <property name="master.jdbc.password" defaultValue="birth"
+                  description="数据库连接密码"/>
+        <!--从主数据库-->
+        <property name="master.jdbc.driverClassName" defaultValue="com.mysql.jdbc.Driver"
+                  description="数据库驱动类"/>
+        <property name="master.jdbc.url " defaultValue="birth"
+                  description="数据库地址"/>
+        <property name="master.jdbc.username" defaultValue="birth"
+                  description="数据库连接用户名"/>
+        <property name="master.jdbc.password" defaultValue="birth"
+                  description="数据库连接密码"/>
         <!--log-->
         <!--log根目录 /logs-->
         <property name="birth.log.root" defaultValue="${birth.app.root}/logs"

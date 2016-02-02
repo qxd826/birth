@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.tqmall.legend.dao.order.${FMT.XyzAbc($table)}Dao">
+
+    <resultMap id = "BaseResultMap" type = "${FMT.XyzAbc($table)}" extends = "COMMON.BASE_RESULT_MAP">
+        #foreach($item in $values)
+        <result column = "${item.name}" property = "${FMT.xyzAbc(${item.name})}" />
+        #end
+    </resultMap>
+
+    <sql id = "BaseColumnList">
+            <trim suffix="" suffixOverrides=",">
+        #foreach($item in $values)
+        a.${item.name} as ${FMT.xyzAbc(${item.name})},
+        #end
+        </trim>
+    </sql>
+
+    <sql id = "BaseWhereClause">
+        <where>
+                <trim prefixOverrides = "and">
+                #foreach($item in $values)
+                <if test = "${FMT.xyzAbc(${item.name})} != null">
+                    and a.${item.name} = #{${FMT.xyzAbc(${item.name})}}
+                </if>
+                #end
+            </trim>
+        </where>
+    </sql>
+
+    <sql id = "BaseUpdateSet">
+        <set>
+                <trim suffix="" suffixOverrides=",">
+                #foreach($item in $values)
+                <if test = "${FMT.xyzAbc(${item.name})} != null">
+                    a.${item.name} = #{${FMT.xyzAbc(${item.name})}},
+                </if>
+                #end
+            </trim>
+        </set>
+    </sql>
+
+    <!-- 查询总数 -->
+    <select id = "selectCount" resultType = "java.lang.Integer">
+        select count(a.id)
+        from legend_${table} a
+        <include refid = "BaseWhereClause" />
+    </select>
+
+    <!-- 查询 -->
+    <select id = "select" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table} a
+        <include refid = "BaseWhereClause" />
+        <include refid = "COMMON.ORDER_BY" />
+        <include refid = "COMMON.LIMIT" />
+    </select>
+
+    <!-- 根据ID查询 -->
+    <select id = "selectById" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table} a
+        where a.id = #{id} and a.is_deleted = 'N'
+    </select>
+
+    <!-- 根据IDS批量查询 -->
+    <select id = "selectByIds" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table} a
+        where a.id in
+        (
+        <foreach collection = "array" index = "index" item = "tag" separator = ",">
+            #{tag}
+        </foreach>
+        )  and a.is_deleted = 'N'
+    </select>
+
+
+    <!-- 根据IDS批量删除 -->
+    <update id = "deleteByIds">
+        update legend_${table} a
+        set is_deleted='Y'
+        where a.id in
+        (
+        <foreach collection = "array" index = "index" item = "tag" separator = ",">
+            #{tag}
+        </foreach>
+        )
+    </update>
+
+    <!-- 根据ID删除 -->
+    <update id = "deleteById">
+        update legend_${table} a
+        set a.is_deleted='Y'
+        where a.id=#{id} and a.is_deleted = 'N'
+    </update>
+
+    <!-- 删除 -->
+    <delete id = "delete">
+        update legend_${table} a
+        set a.is_deleted='Y'
+        <include refid = "BaseWhereClause" />
+    </delete>
+
+    <!-- 添加   -->
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        insert into legend_${table} (
+            <trim suffix="" suffixOverrides=",">
+            #foreach($item in $values)
+            <if test = "${FMT.xyzAbc(${item.name})} != null">
+                ${item.name},
+            </if>
+            #end
+        </trim>
+        )
+        values (
+            <trim suffix="" suffixOverrides=",">
+            #foreach($item in $values)
+            <if test = "${FMT.xyzAbc(${item.name})} != null">
+                #{${FMT.xyzAbc(${item.name})}},
+            </if>
+            #end
+        </trim>
+        )
+    </insert>
+
+    <!-- 通过ID更新 -->
+    <update id = "updateById">
+        update legend_${table} a
+        <include refid = "BaseUpdateSet" />
+        where a.id = #{id}
+    </update>
+
+</mapper> 

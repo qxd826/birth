@@ -9,6 +9,8 @@
     <import resource="spring-servlet.xml"/>
     <import resource="spring-mvc.xml"/>
     <import resource="view-resolve.xml"/>
+    <import resource="data-source.xml"/>
+    <import resource="mybatis-config.xml"/>
     <!--隐式的注册了
     它的作用是隐式的向Spring容器注册
                            AutowiredAnnotationBeanPostProcessor,

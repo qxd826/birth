@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.tqmall.legend.dao.order.${FMT.XyzAbc($table)}Dao">
+
+    <resultMap id = "BaseResultMap" type = "${FMT.XyzAbc($table)}" extends = "COMMON.BASE_RESULT_MAP">
+        #foreach($item in $values)
+        #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+        || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+        #else
+        <result column = "${item.name}" property = "${FMT.xyzAbc(${item.name})}" />
+        #end
+        #end
+    </resultMap>
+
+    <sql id = "BaseColumnList">
+        <trim suffix="" suffixOverrides=",">
+        <include refid = "COMMON.BASE_COLUMN_LIST" />
+        #foreach($item in $values)
+        #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+        || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+        #else
+        ${item.name} as ${FMT.xyzAbc(${item.name})},
+        #end
+        #end
+        </trim>
+    </sql>
+
+    <sql id = "BaseWhereClause">
+        <where>
+            <trim prefixOverrides = "and">
+                <include refid = "COMMON.BASE_WHERE_CLAUSE" />
+                #foreach($item in $values)
+                #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+                || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+                #else
+                <if test = "${FMT.xyzAbc(${item.name})} != null">
+                    and ${item.name} = #{${FMT.xyzAbc(${item.name})}}
+                </if>
+                #end#end
+            </trim>
+        </where>
+    </sql>
+
+    <sql id = "BaseUpdateSet">
+        <set>
+            <trim suffix="" suffixOverrides=",">
+                <include refid = "COMMON.BASE_UPDATE_SET" />
+                #foreach($item in $values)
+                #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+                || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+                #else
+                <if test = "${FMT.xyzAbc(${item.name})} != null">
+                    ${item.name} = #{${FMT.xyzAbc(${item.name})}},
+                </if>
+                #end#end
+            </trim>
+        </set>
+    </sql>
+
+    <!-- 查询总数 -->
+    <select id = "selectCount" resultType = "java.lang.Integer">
+        select count(id)
+        from legend_${table}
+        <include refid = "BaseWhereClause" />
+    </select>
+
+    <!-- 查询 -->
+    <select id = "select" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table}
+        <include refid = "BaseWhereClause" />
+        <include refid = "COMMON.ORDER_BY" />
+        <include refid = "COMMON.LIMIT" />
+    </select>
+
+    <!-- 根据ID查询 -->
+    <select id = "selectById" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table}
+        where id = #{id} and is_deleted = 'N'
+    </select>
+
+    <!-- 根据IDS批量查询 -->
+    <select id = "selectByIds" resultMap = "BaseResultMap">
+        select
+        <include refid = "BaseColumnList" />
+        from legend_${table}
+        where id in
+        (
+        <foreach collection = "array" index = "index" item = "tag" separator = ",">
+            #{tag}
+        </foreach>
+        ) and is_deleted = 'N'
+    </select>
+
+
+    <!-- 根据IDS批量删除 -->
+    <update id = "deleteByIds">
+        update legend_${table}
+        set is_deleted='Y'
+        where id in
+        (
+        <foreach collection = "array" index = "index" item = "tag" separator = ",">
+            #{tag}
+        </foreach>
+        )
+    </update>
+
+    <!-- 根据ID删除 -->
+    <update id = "deleteById">
+        update legend_${table}
+        set is_deleted='Y'
+        where id=#{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id = "delete">
+        update legend_${table}
+        set is_deleted='Y'
+        <include refid = "BaseWhereClause" />
+    </delete>
+
+    <!-- 添加   -->
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        insert into legend_${table} (
+        <trim suffix="" suffixOverrides=",">
+            <include refid = "COMMON.BASE_INSERT_COLUMN" />
+            #foreach($item in $values)
+            #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+            || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+            #else
+            <if test = "${FMT.xyzAbc(${item.name})} != null">
+                ${item.name},
+            </if>
+            #end#end
+        </trim>
+        )
+        values (
+        <trim suffix="" suffixOverrides=",">
+            <include refid = "COMMON.BASE_INSERT_VALUE" />
+            #foreach($item in $values)
+            #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+            || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+            #else
+            <if test = "${FMT.xyzAbc(${item.name})} != null">
+                #{${FMT.xyzAbc(${item.name})}},
+            </if>
+            #end#end
+        </trim>
+        )
+    </insert>
+
+    <!-- 通过ID更新 -->
+    <update id = "updateById">
+        update legend_${table}
+        <include refid = "BaseUpdateSet" />
+        where id = #{id}
+    </update>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into legend_${table} (
+        <trim suffix="" suffixOverrides=",">
+            is_deleted,
+            gmt_create,
+            creator,
+            gmt_modified,
+            modifier,
+            #foreach($item in $values)
+            #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+            || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+            #else
+            ${item.name},
+            #end#end
+        </trim>
+        )
+        values
+
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <trim suffix="" suffixOverrides=",">
+                'N',
+                <if test="item.gmtCreate != null">
+                    #{item.gmtCreate},
+                </if>
+                <if test="item.gmtCreate == null">
+                    now(),
+                </if>
+                <if test="item.creator != null">
+                    #{item.creator},
+                </if>
+                <if test="item.creator == null">
+                    0,
+                </if>
+                <if test="item.gmtModified != null">
+                    #{item.gmtModified},
+                </if>
+                <if test="item.gmtModified == null">
+                    now(),
+                </if>
+                <if test="item.creator != null">
+                    #{item.creator},
+                </if>
+                <if test="item.creator == null">
+                    0,
+                </if>
+                #foreach($item in $values)
+                #if(${item.name} == "id" || ${item.name} == "gmt_create" || ${item.name} == "gmt_modified"
+                || ${item.name} == "modifier" || ${item.name} == "creator" || ${item.name} == "is_deleted")
+                #else
+                <if test="item.${FMT.xyzAbc(${item.name})} != null">
+                    #{item.${FMT.xyzAbc(${item.name})}},
+                </if>
+                <if test="item.${FMT.xyzAbc(${item.name})} == null">
+                    NULL ,
+                </if>
+                #end#end
+            </trim>
+            )
+        </foreach>
+    </insert>
+
+</mapper> 
