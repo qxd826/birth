@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    ">
+    <!--redis 客户端操作对象-->
+    <bean id="jedisPoolUtil" class="com.qxd.birth.common.utils.JedisPoolUtil">
+        <property name="slaveHost" value="${legend.slave.jedis.host}"/>
+        <property name="slavePort" value="${legend.slave.jedis.port}"/>
+        <property name="slavePassword" value="${legend.slave.jedis.pwd}"/>
+        <property name="slaveIdle" value="${legend.slave.jedis.idle}"/>
+        <property name="slaveTimeout" value="${legend.slave.jedis.timeout}"/>
+        <property name="slaveMaxTotal" value="${legend.slave.jedis.maxTotal}"/>
+        <property name="masterHost" value="${legend.master.jedis.host}"/>
+        <property name="masterPort" value="${legend.master.jedis.port}"/>
+        <property name="masterPassword" value="${legend.master.jedis.pwd}"/>
+        <property name="masterIdle" value="${legend.master.jedis.idle}"/>
+        <property name="masterTimeout" value="${legend.master.jedis.timeout}"/>
+        <property name="masterMaxTotal" value="${legend.master.jedis.maxTotal}"/>
+        <property name="dbIndex" value="${legend.jedis.db.number}" />
+    </bean>
+
+
+</beans>

@@ -8,9 +8,16 @@
     <context:property-placeholder location="/WEB-INF/application.properties"/>
     <import resource="spring-servlet.xml"/>
     <import resource="spring-mvc.xml"/>
+    <!--视图解析器配置-->
     <import resource="view-resolve.xml"/>
+    <!--数据源配置-->
     <import resource="data-source.xml"/>
+    <!--myBatis配置-->
     <import resource="mybatis-config.xml"/>
+    <!--定时器配置-->
+    <import resource="quartz.xml"/>
+    <!--自定义bean-->
+    <import resource="beans-config.xml"/>
     <!--隐式的注册了
     它的作用是隐式的向Spring容器注册
                            AutowiredAnnotationBeanPostProcessor,

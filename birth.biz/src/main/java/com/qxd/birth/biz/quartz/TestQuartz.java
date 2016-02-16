@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class TestQuartz {
     public void execute(){
+        //todo something
         log.info("[定时任务测试] I am quartz");
     }
 }
