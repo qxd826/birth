@@ -83,4 +83,12 @@ public class Result<T> {
         result.message = error.getMessage();
         return result;
     }
+
+    public static <T> Result<T> wrapErrorResult(String code, String message) {
+        Result<T> result = new Result<T>();
+        result.success = false;
+        result.code = code;
+        result.message = message;
+        return result;
+    }
 }

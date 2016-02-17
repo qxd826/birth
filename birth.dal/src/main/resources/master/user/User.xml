@@ -47,7 +47,7 @@
     <!-- 查询总数 -->
     <select id="selectCount" resultType="java.lang.Integer">
         select count(id)
-        from legend_user
+        from love_user
         <include refid="BaseWhereClause"/>
     </select>
 
@@ -55,7 +55,7 @@
     <select id="select" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"/>
-        from legend_user
+        from love_user
         <include refid="BaseWhereClause"/>
         <include refid="COMMON.ORDER_BY"/>
         <include refid="COMMON.LIMIT"/>
@@ -65,7 +65,7 @@
     <select id="selectById" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"/>
-        from legend_user
+        from love_user
         where id = #{id} and is_deleted = 'N'
     </select>
 
@@ -73,7 +73,7 @@
     <select id="selectByIds" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"/>
-        from legend_user
+        from love_user
         where id in
         (
         <foreach collection="array" index="index" item="tag" separator=",">
@@ -85,7 +85,7 @@
 
     <!-- 根据IDS批量删除 -->
     <update id="deleteByIds">
-        update legend_user
+        update love_user
         set is_deleted='Y'
         where id in
         (
@@ -97,21 +97,21 @@
 
     <!-- 根据ID删除 -->
     <update id="deleteById">
-        update legend_user
+        update love_user
         set is_deleted='Y'
         where id=#{id}
     </update>
 
     <!-- 删除 -->
     <delete id="delete">
-        update legend_user
+        update love_user
         set is_deleted='Y'
         <include refid="BaseWhereClause"/>
     </delete>
 
     <!-- 添加   -->
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into legend_user (
+        insert into love_user (
         <trim suffix="" suffixOverrides=",">
             <include refid="COMMON.BASE_INSERT_COLUMN"/>
             <if test="name != null">
@@ -137,13 +137,13 @@
 
     <!-- 通过ID更新 -->
     <update id="updateById">
-        update legend_user
+        update love_user
         <include refid="BaseUpdateSet"/>
         where id = #{id}
     </update>
 
     <insert id="batchInsert" parameterType="java.util.List">
-        insert into legend_user (
+        insert into love_user (
         <trim suffix="" suffixOverrides=",">
             is_deleted,
             gmt_create,
