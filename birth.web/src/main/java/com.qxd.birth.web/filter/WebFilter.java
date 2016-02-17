@@ -16,8 +16,8 @@ import java.io.IOException;
 /**
  * Created by xiangDong.qu on 15/10/26.
  */
-public class TestFilter implements Filter {
-    Logger logger = LoggerFactory.getLogger(TestFilter.class);
+public class WebFilter implements Filter {
+    Logger logger = LoggerFactory.getLogger(WebFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

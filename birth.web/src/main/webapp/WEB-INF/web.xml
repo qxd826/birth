@@ -60,12 +60,25 @@
 
     <!--自定义filter 测试 filter-->
     <filter>
-        <filter-name>BaseFilter</filter-name>
-        <filter-class>com.qxd.birth.web.filter.TestFilter</filter-class>
+        <filter-name>WebFilter</filter-name>
+        <filter-class>com.qxd.birth.web.filter.WebFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>BaseFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>WebFilter</filter-name>
+        <url-pattern>/web/*</url-pattern>
+    </filter-mapping>
+    <!--app过滤-->
+    <filter>
+        <filter-name>AppFilter</filter-name>
+        <filter-class>com.qxd.birth.web.filter.AppFilter</filter-class>
+        <init-param>
+            <param-name>notCheckURLList</param-name>
+            <param-value>/app/login;</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AppFilter</filter-name>
+        <url-pattern>/app/*</url-pattern>
     </filter-mapping>
 
 
