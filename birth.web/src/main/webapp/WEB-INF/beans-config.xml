@@ -2,8 +2,7 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-    ">
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
     <!--redis 客户端操作对象-->
     <bean id="jedisPoolUtil" class="com.qxd.birth.common.utils.JedisPoolUtil">
         <property name="slaveHost" value="${legend.slave.jedis.host}"/>
@@ -20,6 +19,7 @@
         <property name="masterMaxTotal" value="${legend.master.jedis.maxTotal}"/>
         <property name="dbIndex" value="${legend.jedis.db.number}" />
     </bean>
+
 
 
 </beans>
