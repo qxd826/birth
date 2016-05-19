@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-	   http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
        ">
     <!--视图解析器 order越小最先匹配,可以配置多个,也可以单独配置-->
     <!-- Resolve views based on string names -->
@@ -64,21 +61,21 @@
         </property>
     </bean>
 
-    <!-- velocity视图解析器 -->
-    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-        <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="cache" value="true"/>
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".vm"/>
-        <property name="order" value="2"/>
-    </bean>
+    <!--    &lt;!&ndash; velocity视图解析器 &ndash;&gt;
+        <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+            <property name="contentType" value="text/html;charset=UTF-8"/>
+            <property name="cache" value="true"/>
+            <property name="prefix" value="/"/>
+            <property name="suffix" value=".vm"/>
+            <property name="order" value="2"/>
+        </bean>-->
 
     <!-- velocity环境配置 -->
-    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-        <!-- velocity配置文件路径 -->
-        <property name="configLocation" value="/WEB-INF/velocity.properties"/>
-        <!-- velocity模板路径 -->
-        <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
-    </bean>
+    <!--    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+            &lt;!&ndash; velocity配置文件路径 &ndash;&gt;
+            <property name="configLocation" value="/WEB-INF/velocity.properties"/>
+            &lt;!&ndash; velocity模板路径 &ndash;&gt;
+            <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>
+        </bean>-->
 
 </beans>
