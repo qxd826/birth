@@ -14,8 +14,8 @@ bin
 */test-output/**
 */target/**
 *.log
-*.txt
-*.sql
+*/*.txt/**
+*/*.sql/**
 birth.ipr
 birth.iws
 antx.properties
