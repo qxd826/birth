@@ -1,0 +1,6 @@
+#vm真实模板
+autoparts.jdbc.driver=${autoparts_jdbc_driver}
+autoparts.jdbc.url=${autoparts_jdbc_url}
+autoparts.jdbc.username=${autoparts_jdbc_username}
+autoparts.jdbc.password=${autoparts_jdbc_password}
+

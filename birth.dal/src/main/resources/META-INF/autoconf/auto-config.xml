@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="jdbc">
+
+        <property name="autoparts.jdbc.driver"
+                  defaultValue="com.mysql.jdbc.Driver"
+                  description="autoparts数据库驱动"/>
+        <property name="autoparts.jdbc.url"
+                  defaultValue="jdbc:mysql://112.124.66.38:3306/autoparts_dev?characterEncoding=UTF-8"
+                  description="autoparts数据库连接url"/>
+        <property name="autoparts.jdbc.username"
+                  defaultValue="dev_iserver"
+                  description="autoparts数据库连接用户名"/>
+        <property name="autoparts.jdbc.password"
+                  defaultValue="tqmall.iserver.2015"
+                  description="autoparts数据库连接用户名"/>
+    </group>
+
+    <script>
+        <generate template="jdbc.properties.vm"
+                  destfile="jdbc.properties" charset="UTF-8"/>
+    </script>
+</config>

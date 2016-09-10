@@ -21,8 +21,10 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.qxd.birth</groupId>
+            <artifactId>birth.common</artifactId>
         </dependency>
     </dependencies>
 </project>
