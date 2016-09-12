@@ -20,12 +20,33 @@ public class DateUtil {
      * @param date      日期
      * @param formatStr 日期格式 例如:"yyyy-MM-dd HH:mm:ss","yyyy年MM月dd日 HH:mm"
      */
-    public static String convertDateToStr(Date date, String formatStr) {
+    public static String formatDate(Date date, String formatStr) {
         if (date == null || StringUtils.isBlank(formatStr)) {
             return null;
         }
         SimpleDateFormat f = new SimpleDateFormat(formatStr);
         return f.format(date);
+    }
+
+    /**
+     * 根据自定义日期格式 生成日期对象
+     *
+     * @param dateStr   日期字符串
+     * @param formatStr 日期格式 例如:"yyyy-MM-dd HH:mm:ss","yyyy年MM月dd日 HH:mm"
+     *
+     * @return
+     */
+    public static Date parseDate(String dateStr, String formatStr) {
+        if (StringUtils.isBlank(dateStr) || StringUtils.isBlank(formatStr)) {
+            return null;
+        }
+        SimpleDateFormat f = new SimpleDateFormat(formatStr);
+        try {
+            return f.parse(dateStr);
+        } catch (ParseException e) {
+            log.error("日期转换异常", e);
+        }
+        return null;
     }
 
     /**
@@ -44,6 +65,7 @@ public class DateUtil {
      * "yyyy-MM-dd hh:MM:ss"
      *
      * @param date 时间
+     *
      * @return 格式化以后的时间字符串
      */
     public static String convertDateToYMDHMS(Date date) {
@@ -59,6 +81,7 @@ public class DateUtil {
      * "yyyy-MM-dd hh:MM"
      *
      * @param date 时间
+     *
      * @return 格式化以后的时间字符串
      */
     public static String convertDateToYMDHM(Date date) {
@@ -74,6 +97,7 @@ public class DateUtil {
      * "yyyy-MM-dd hh:MM:ss"
      *
      * @param date 时间
+     *
      * @return 格式化以后的时间字符串
      */
     public static String convertDateToYMDHMStr(Date date) {
@@ -89,6 +113,7 @@ public class DateUtil {
      * "HH:mm"
      *
      * @param date 时间
+     *
      * @return 格式化以后的时间字符串
      */
     public static String convertDateToHm(Date date) {

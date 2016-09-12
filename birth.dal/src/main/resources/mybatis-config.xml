@@ -7,8 +7,10 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <tx:annotation-driven transaction-manager="transactionManagerMaster"/>
+    <!-- data-source 数据源-->
+    <import resource="classpath:data-source.xml"/>
 
+    <tx:annotation-driven transaction-manager="transactionManagerMaster"/>
     <bean id="transactionManagerMaster" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSourceMaster"/>
         <qualifier value="transactionMaster"/>

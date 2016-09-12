@@ -19,7 +19,4 @@
         <property name="masterMaxTotal" value="${legend.master.jedis.maxTotal}"/>
         <property name="dbIndex" value="${legend.jedis.db.number}" />
     </bean>
-
-
-
 </beans>

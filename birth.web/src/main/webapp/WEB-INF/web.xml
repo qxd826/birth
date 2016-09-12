@@ -12,7 +12,8 @@
     <!-- 一切皆是spring的bean -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/application-context.xml</param-value>
+        <!--classpath路径 classpath针对resources文件夹类型目录-->
+        <param-value>classpath:application-context.xml</param-value>
     </context-param>
 
     <!-- Creates the Spring Container shared by all Servlets and Filters -->

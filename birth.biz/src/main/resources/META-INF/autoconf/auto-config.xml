@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="biz">
+
+        <property name="quartz.run" defaultValue="false" description="定时器"/>
+    </group>
+
+    <script>
+        <generate template="biz.properties.vm" destfile="biz-context.properties" charset="UTF-8"/>
+    </script>
+</config>
