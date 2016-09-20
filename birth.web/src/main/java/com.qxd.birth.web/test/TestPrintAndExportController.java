@@ -23,6 +23,14 @@ import java.util.List;
 @Slf4j
 public class TestPrintAndExportController {
 
+    /**
+     * 测试打印
+     *
+     * @param request
+     * @param model
+     *
+     * @return
+     */
     @RequestMapping(value = "/print", method = RequestMethod.GET)
     public Object testPrint(HttpServletRequest request, Model model) {
         TestUser testUser = new TestUser();
@@ -32,11 +40,20 @@ public class TestPrintAndExportController {
         return "/test/testPrintFtl";
     }
 
+    /**
+     * 测试导出
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
     @RequestMapping(value = "/export", method = RequestMethod.GET)
     @ResponseBody
     public Object testExport(HttpServletRequest request, HttpServletResponse response) {
+
         response.setContentType("application/x-msdownload");
-        String filename = "userBalanceLog_excel";
+        String filename = "testExport";
         try {
             filename = java.net.URLEncoder.encode("测试导出excel", "UTF-8");
         } catch (UnsupportedEncodingException e) {
