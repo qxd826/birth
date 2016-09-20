@@ -1,0 +1,43 @@
+本项目提供四种提供方式
+方式一:通过本机配置tomcat启动
+注意生成对应的war包
+
+
+
+方式二:maven启动 通过tomcat插件启动 (maven插件启动)
+tomcat插件配置在birth.web模块目录下
+
+启动顺序:
+1. before launch:
+maven命令目录: /Users/admin/Documents/work/birth
+maven命令: clean install -Dmaven.test.skip -U -Dautoconfig.skip
+
+2. 启动
+maven命令目录: /Users/admin/Documents/work/birth/birth.web
+maven命令: tomcat7:run-war-only
+
+
+
+方式三:maven启动 通过jetty插件启动(maven插件启动)
+jetty插件配置在birth父模块目录下
+
+启动顺序:
+1. before launch:
+maven命令目录: /Users/admin/Documents/work/birth
+maven命令: clean install -Dmaven.test.skip -U -Dautoconfig.skip
+
+2. 启动
+maven命令目录: /Users/admin/Documents/work/birth/birth.web
+maven命令: jetty:run
+
+
+
+方式四:jettyService启动
+具体的实现类为:
+TestJettyService
+依赖
+<dependency>
+    <groupId>org.eclipse.jetty.aggregate</groupId>
+    <artifactId>jetty-all</artifactId>
+    <version>8.1.16.v20140903</version>
+</dependency>

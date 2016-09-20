@@ -36,7 +36,28 @@
                     <port>8088</port>
                 </configuration>
             </plugin>
-            <!-- autoconfig插件 扫描META-INF/autoconf/-->
+            <!-- jetty插件 -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.5</version>
+                <configuration>
+                    <!-- 添加这行 用来避免
+                    如果只是象上面的配置，jetty会锁定WEB项目下的文件，不让人更改。
+                    这给开发带来很大麻烦，因为我们在测试时，发现问题希望马上能够更改，
+                    然后刷新页面生效。-->
+                    <webDefaultXml>src/main/resources/jetty/webdefault.xml</webDefaultXml>
+                    <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <contextPath>/birth</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8088</port>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+            <!-- autoconfig插件 扫描 modul META-INF/autoconf/-->
             <plugin>
                 <groupId>com.alibaba.citrus.tool</groupId>
                 <artifactId>autoconfig-maven-plugin</artifactId>
@@ -125,6 +146,16 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
+        </dependency>
+        <!--主要用于jettyService方法启动用-->
+        <dependency>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
+            <artifactId>jetty-all</artifactId>
+        </dependency>
+        <!---->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
         </dependency>
         <!--        <dependency>
                     <groupId>org.apache.velocity</groupId>
