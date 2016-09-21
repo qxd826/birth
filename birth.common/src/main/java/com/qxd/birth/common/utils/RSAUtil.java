@@ -207,7 +207,7 @@ public final class RSAUtil {
      */
     public static PublicKey loadPublicKey(String publicKeyStr) throws Exception {
         try {
-            byte[] buffer = Base64Util.decodeBASE64(publicKeyStr);
+            byte[] buffer = Base64Utils.decodeBASE64(publicKeyStr);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
             return (RSAPublicKey) keyFactory.generatePublic(keySpec);
@@ -230,7 +230,7 @@ public final class RSAUtil {
      */
     public static PrivateKey loadPrivateKey(String privateKeyStr) throws Exception {
         try {
-            byte[] buffer = Base64Util.decodeBASE64(privateKeyStr);
+            byte[] buffer = Base64Utils.decodeBASE64(privateKeyStr);
             // X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
             PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(buffer);
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
