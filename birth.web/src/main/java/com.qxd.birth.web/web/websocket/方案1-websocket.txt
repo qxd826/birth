@@ -6,6 +6,8 @@ websocket-service.xml,
 websocketOnline.html,
 web.xml
 
+tomcat7.0 jetty 9.0之上才支持websocket
+
 该方式是基于spring-websocket
 1.导入spring相关包
 更新spring框架的jar包至4.0以上（spring-core, spring-context, spring-web and spring-webmvc）
@@ -302,3 +304,10 @@ public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse ser
       }
       return true;
   }
+
+
+  需要强调的是web.xml中的路径匹配问题 写为<url-pattern>/</url-pattern>全部匹配的这种我就不说了
+
+  如果使用路径匹配<url-pattern>/wsk/*</url-pattern>
+
+  spring中的地址不能写为<websocket:mapping path="/wsk/echo" 只需要写为 <websocket:mapping path="/echo"就可以了,不然无法访问,这个是很多人都会遇到的坑.需特别注意.

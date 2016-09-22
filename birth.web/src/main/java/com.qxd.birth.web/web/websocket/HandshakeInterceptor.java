@@ -11,6 +11,8 @@ import java.util.Map;
 
 /**
  * Created by xiangqong.qu on 16/9/21 15:49.
+ *
+ * HandShakeInterceptor是websocket握手拦截器，用于拦截websocket初始化连接的请求
  */
 @Component
 @Slf4j
