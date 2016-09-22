@@ -1,7 +1,7 @@
+
 本项目提供四种提供方式
 方式一:通过本机配置tomcat启动
 注意生成对应的war包
-
 
 
 方式二:maven启动 通过tomcat插件启动 (maven插件启动)
@@ -41,3 +41,4 @@ TestJettyService
     <artifactId>jetty-all</artifactId>
     <version>8.1.16.v20140903</version>
 </dependency>
+

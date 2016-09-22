@@ -307,7 +307,7 @@
                 <version>8.1.16.v20140903</version>
             </dependency>
 
-            <!--websocket-->
+            <!--websocket 方案1-->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
@@ -327,40 +327,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-messaging</artifactId>
                 <version>${org.springframework-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.websocket</groupId>
-                <artifactId>javax.websocket-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-            <!-- To write basic websockets against -->
-            <dependency>
-                <groupId>org.eclipse.jetty.websocket</groupId>
-                <artifactId>websocket-api</artifactId>
-                <version>9.1.0.v20131115</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty.websocket</groupId>
-                <artifactId>websocket-client</artifactId>
-                <version>9.3.4.RC0</version>
-                <!--<scope>test</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty.websocket</groupId>
-                <artifactId>websocket-server</artifactId>
-                <version>9.3.4.RC0</version>
-                <!--<scope>test</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-client</artifactId>
-                <version>9.3.4.RC0</version>
-                <!--<scope>test</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-embed-websocket</artifactId>
-                <version>7.0.52</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
