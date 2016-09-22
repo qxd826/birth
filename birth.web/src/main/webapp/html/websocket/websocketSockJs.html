@@ -3,7 +3,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="http://cdn.bootcss.com/sockjs-client/1.1.1/sockjs.min.js"></script>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
@@ -13,26 +13,16 @@
     <!--<script type="text/javascript" src="js/jquery-1.7.2.js"></script>-->
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../../resources/js/touch.js"></script>
 
     <title>webSocket测试</title>
     <script type="text/javascript">
         $(function () {
-            //获取域名
-            var host = window.location.host;
-            alert(host);
-            var host2 = document.domain;
 
-            var websocket;
-            if ('WebSocket' in window) {
-                alert("WebSocket");
-                websocket = new WebSocket("ws://" + host + "/birth/webSocketOne");
-            } else if ('MozWebSocket' in window) {
-                alert("MozWebSocket");
-                websocket = new MozWebSocket("ws://echo");
-            } else {
-                alert("SockJS");
-                websocket = new SockJS("/birth/sockJs/webSocketOne");
-            }
+            var websocket = new SockJS("/birth/sockJs/webSocketOne");
+            <!--重连次数-->
+            var count = 1;
+
             websocket.onopen = function (evnt) {
                 $("#tou").html("链接服务器成功!")
             };
@@ -47,6 +37,7 @@
             $('#send').bind('click', function () {
                 send();
             });
+
             function send() {
                 if (websocket != null) {
                     var message = document.getElementById('message').value;
@@ -54,10 +45,22 @@
                     websocket.send(message);
                 } else {
                     alert('未与服务器链接.');
+                    if (3 > count) {
+                        reContect();
+                        send();
+                    }
                 }
             }
+
+            function reContect() {
+                count++;
+                websocket = new SockJS("/birth/sockJs/webSocketTwo");
+            }
         });
+
+
     </script>
+
 </head>
 <body>
 
@@ -72,9 +75,9 @@
         <span class="input-group-btn">
         <button class="btn btn-default" type="button" id="send">发送</button>
       </span>
-    </div><!-- /input-group -->
-</div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+    </div>
+</div>
+</div>
 </body>
 
 </html>

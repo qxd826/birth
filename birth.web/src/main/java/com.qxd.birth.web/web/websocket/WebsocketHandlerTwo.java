@@ -10,7 +10,6 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by xiangqong.qu on 16/9/21 15:43.
@@ -19,16 +18,16 @@ import java.util.Date;
  */
 @Component
 @Slf4j
-public class WebsocketHandler extends TextWebSocketHandler {
+public class WebsocketHandlerTwo extends TextWebSocketHandler {
 
     private static final ArrayList<WebSocketSession> users = new ArrayList<WebSocketSession>();
 
     /**
      * after connection establish
      */
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        log.info("connect success...");
-        users.add(session);
+    public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
+        log.info("connect success... WebSocketHandlerTwo" + this.hashCode());
+        users.add(webSocketSession);
     }
 
     /**
@@ -69,6 +68,8 @@ public class WebsocketHandler extends TextWebSocketHandler {
             try {
                 if (user.isOpen()) {
                     user.sendMessage(message);
+                } else {
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();

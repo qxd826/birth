@@ -6,6 +6,10 @@ websocket-service.xml,
 websocketOnline.html,
 web.xml
 
+服务端配置 通过xml配置 或通过对象配置
+xml:websocket-service.xml
+Object:
+
 tomcat7.0 jetty 9.0之上才支持websocket
 
 该方式是基于spring-websocket
