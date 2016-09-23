@@ -48,6 +48,8 @@
     <filter>
         <filter-name>SetCharacterEncoding</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--wensocket-->
+        <async-supported>true</async-supported>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -56,8 +58,6 @@
             <param-name>forceEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
-        <!--wensocket-->
-        <async-supported>true</async-supported>
     </filter>
     <filter-mapping>
         <filter-name>SetCharacterEncoding</filter-name>
@@ -79,12 +79,12 @@
     <filter>
         <filter-name>AppFilter</filter-name>
         <filter-class>com.qxd.birth.web.filter.AppFilter</filter-class>
+        <!--wensocket-->
+        <async-supported>true</async-supported>
         <init-param>
             <param-name>notCheckURLList</param-name>
             <param-value>/app/login;</param-value>
         </init-param>
-        <!--wensocket-->
-        <async-supported>true</async-supported>
     </filter>
     <filter-mapping>
         <filter-name>AppFilter</filter-name>
