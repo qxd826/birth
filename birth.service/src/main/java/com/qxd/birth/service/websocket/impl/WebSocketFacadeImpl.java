@@ -5,9 +5,6 @@ import com.qxd.birth.service.websocket.WebSocketFacade;
 import com.qxd.birth.service.websocket.WebSocketUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
-import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -20,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class WebSocketFacadeImpl implements WebSocketFacade {
 
-    static {
+/*    static {
         log.info("WebSocketFacadeImpl 注册");
     }
 
@@ -55,5 +52,5 @@ public class WebSocketFacadeImpl implements WebSocketFacade {
         }
         log.info(MessageFormat.format("总连接数{0},发送成功{1}", countAll, countSend));
         return Result.wrapSuccessfulResult(Boolean.TRUE);
-    }
+    }*/
 }

@@ -7,15 +7,12 @@
 
     <context:property-placeholder order="30" location="classpath:application.properties"/>
 
-    <!--<import resource="/WEB-INF/spring-servlet.xml"/>-->
-
     <import resource="classpath:spring-mvc.xml"/>
     <!--视图解析器配置-->
     <import resource="classpath:view-resolve.xml"/>
     <!--service-->
     <import resource="classpath*:service-context.xml"/>
-    <!--websocket-->
-    <import resource="classpath:websocket-service.xml"/>
+
     <!--隐式的注册了
     它的作用是隐式的向Spring容器注册
                            AutowiredAnnotationBeanPostProcessor,

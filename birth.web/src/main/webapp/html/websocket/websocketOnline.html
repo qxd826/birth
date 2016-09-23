@@ -25,13 +25,13 @@
             var websocket;
             if ('WebSocket' in window) {
                 alert("WebSocket");
-                websocket = new WebSocket("ws://" + host + "/birth/webSocketOne");
+                websocket = new WebSocket("ws://" + host + "/birth/webSocketTypeTwo");
             } else if ('MozWebSocket' in window) {
                 alert("MozWebSocket");
                 websocket = new MozWebSocket("ws://echo");
             } else {
                 alert("SockJS");
-                websocket = new SockJS("/birth/sockJs/webSocketOne");
+                websocket = new SockJS("/birth/sockJs/webSocketTypeTwo");
             }
             websocket.onopen = function (evnt) {
                 $("#tou").html("链接服务器成功!")
