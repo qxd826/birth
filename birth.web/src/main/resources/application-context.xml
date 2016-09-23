@@ -14,8 +14,6 @@
     <import resource="classpath:view-resolve.xml"/>
     <!--service-->
     <import resource="classpath*:service-context.xml"/>
-    <!--websocket-->
-    <import resource="classpath:websocket-service.xml"/>
     <!--隐式的注册了
     它的作用是隐式的向Spring容器注册
                            AutowiredAnnotationBeanPostProcessor,

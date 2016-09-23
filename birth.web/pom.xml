@@ -147,61 +147,16 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
         </dependency>
-        <!--主要用于jettyService方法启动用-->
+        <!--主要用于jettyService方法启动用 jetty all 包括多个jetty包-->
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
         </dependency>
-        <!--好像去了也没影响-->
+        <!--jettyService启动对jsp的影响 不然无法访问jsp-->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
+            <artifactId>jetty-jsp</artifactId>
         </dependency>
-        <!--websocket 方案一-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-        </dependency>
-        <!-- To write basic websockets against -->
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-client</artifactId>
-            <!--<scope>test</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-server</artifactId>
-            <!--<scope>test</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-client</artifactId>
-            <!--<scope>test</scope>-->
-        </dependency>
-        <!--<dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-websocket</artifactId>
-        </dependency>-->
         <!--velocity 模板依赖包-->
         <!--        <dependency>
                     <groupId>org.apache.velocity</groupId>
