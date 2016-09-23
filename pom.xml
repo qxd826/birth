@@ -300,11 +300,11 @@
                 <version>8.1.16.v20140903</version>
             </dependency>
 
-            <!-- Jetty Webapp -->
+            <!--jettyService 启动对jsp解析的支持 通过maven jetty插件启动没影响-->
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-webapp</artifactId>
-                <version>8.1.16.v20140903</version>
+                <artifactId>jetty-jsp</artifactId>
+                <version>9.2.19.v20160908</version>
             </dependency>
 
             <!--websocket 方案1-->

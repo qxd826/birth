@@ -21,7 +21,9 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
+                    <packagingExcludes>
 
+                    </packagingExcludes>
                 </configuration>
             </plugin>
             <!-- tomcat插件 -->
@@ -147,16 +149,16 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
         </dependency>
-        <!--主要用于jettyService方法启动用-->
+        <!--jetty包用于jetty方式启动项目-->
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
         </dependency>
-        <!--好像去了也没影响-->
-        <dependency>
+        <!--jettyService 启动对jsp解析的支持 通过maven jetty插件启动没影响-->
+        <!--<dependency>
             <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-        </dependency>
+            <artifactId>jetty-jsp</artifactId>
+        </dependency>-->
         <!--websocket 方案一-->
         <dependency>
             <groupId>org.springframework</groupId>
