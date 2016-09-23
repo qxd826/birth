@@ -51,7 +51,7 @@
                 if (websocket != null) {
                     var message = document.getElementById('message').value;
                     document.getElementById('message').value = "";
-                    websocket.send(message);
+                    websocket.send(message + "| i am from webSocket");
                 } else {
                     alert('未与服务器链接.');
                 }

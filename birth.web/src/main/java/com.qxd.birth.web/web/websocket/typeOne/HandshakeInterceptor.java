@@ -1,4 +1,4 @@
-package com.qxd.birth.web.web.websocket;
+package com.qxd.birth.web.web.websocket.typeOne;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;

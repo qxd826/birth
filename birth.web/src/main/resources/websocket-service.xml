@@ -3,11 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:websocket="http://www.springframework.org/schema/websocket"
        xsi:schemaLocation="
-            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/websocket
+            http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
     <!-- websocket消息处理bean -->
-    <bean id="webSocket" class="com.qxd.birth.web.web.websocket.WebsocketHandlerOne"/>
+    <bean id="webSocket" class="com.qxd.birth.web.web.websocket.typeOne.WebsocketHandlerOne"/>
 
     <!--两个配置映射到 同一个实例对象-->
     <websocket:handlers>
@@ -15,7 +17,7 @@
         <websocket:mapping path="/webSocketOne" handler="webSocket"/>
         <!-- 配置握手拦截器 -->
         <websocket:handshake-interceptors>
-            <bean class="com.qxd.birth.web.web.websocket.HandshakeInterceptor"/>
+            <bean class="com.qxd.birth.web.web.websocket.typeOne.HandshakeInterceptor"/>
         </websocket:handshake-interceptors>
     </websocket:handlers>
     <!--支持sockjs-->
@@ -24,7 +26,7 @@
         <websocket:mapping path="/sockJs/webSocketOne" handler="webSocket"/>
         <!-- 配置握手拦截器 -->
         <websocket:handshake-interceptors>
-            <bean class="com.qxd.birth.web.web.websocket.HandshakeInterceptor"/>
+            <bean class="com.qxd.birth.web.web.websocket.typeOne.HandshakeInterceptor"/>
         </websocket:handshake-interceptors>
         <!-- 开启sockjs，去掉则关闭sockjs -->
         <websocket:sockjs/>
