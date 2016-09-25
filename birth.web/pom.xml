@@ -152,11 +152,6 @@
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
         </dependency>
-        <!--好像去了也没影响-->
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-        </dependency>
 
         <!--websocket方案二-->
         <dependency>

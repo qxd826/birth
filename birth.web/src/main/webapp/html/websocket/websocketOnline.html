@@ -25,7 +25,7 @@
             var websocket;
             if ('WebSocket' in window) {
                 alert("WebSocket");
-                websocket = new WebSocket("ws://" + host + "/birth/webSocketTypeTwo");
+                websocket = new WebSocket("ws://" + host + "/birth/webSocketTypeTwo" + "/1" + "/2");
             } else if ('MozWebSocket' in window) {
                 alert("MozWebSocket");
                 websocket = new MozWebSocket("ws://echo");
@@ -40,6 +40,8 @@
                 $("#msg").html($("#msg").html() + "<br/>" + evnt.data);
             };
             websocket.onerror = function (evnt) {
+                $("#tou").html("链接服务器失败!")
+                console.info(evnt.data);
             };
             websocket.onclose = function (evnt) {
                 $("#tou").html("与服务器断开了链接!")
@@ -51,7 +53,7 @@
                 if (websocket != null) {
                     var message = document.getElementById('message').value;
                     document.getElementById('message').value = "";
-                    websocket.send(message + "| i am from webSocket");
+                    websocket.send(message + " | i am from webSocket");
                 } else {
                     alert('未与服务器链接.');
                 }

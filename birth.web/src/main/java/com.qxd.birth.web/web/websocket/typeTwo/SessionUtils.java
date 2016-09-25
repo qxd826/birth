@@ -21,7 +21,10 @@ public class SessionUtils {
     }
 
     public static void remove(String relationId, int userCode) {
-        clients.remove(getKey(relationId, userCode));
+        String key = getKey(relationId, userCode);
+        if (clients.containsKey(key)) {
+            clients.remove(key);
+        }
     }
 
     /*
