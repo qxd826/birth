@@ -153,10 +153,10 @@
             <artifactId>jetty-all</artifactId>
         </dependency>
         <!--jettyService启动对jsp的影响 不然无法访问jsp-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-jsp</artifactId>
-        </dependency>
+        </dependency>-->
         <!--velocity 模板依赖包-->
         <!--        <dependency>
                     <groupId>org.apache.velocity</groupId>
