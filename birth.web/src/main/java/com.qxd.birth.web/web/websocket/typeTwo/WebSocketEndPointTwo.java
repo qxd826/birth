@@ -7,11 +7,11 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
 /**
- * Created by xiangqong.qu on 16/9/22 20:28.
+ * Created by xiangqong.qu on 16/9/26 10:45.
  */
-@ServerEndpoint("/webSocketTypeTwo/{relationId}/{userCode}")
+@ServerEndpoint("/webSocketTypeThree/{relationId}/{userCode}/info")
 @Slf4j
-public class WebSocketEndPoint {
+public class WebSocketEndPointTwo {
     /**
      * 打开连接时触发
      *
@@ -23,7 +23,7 @@ public class WebSocketEndPoint {
     public void onOpen(@PathParam(value = "relationId") String relationId,
                        @PathParam("userCode") int userCode,
                        Session session) {
-        log.info("WebSocket Start Connecting: " + SessionUtils.getKey(relationId, userCode));
+        log.info("WebSocket Start Connecting:" + SessionUtils.getKey(relationId, userCode));
         SessionUtils.put(relationId, userCode, session);
     }
 

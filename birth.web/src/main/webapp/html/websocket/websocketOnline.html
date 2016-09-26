@@ -31,7 +31,7 @@
                 websocket = new MozWebSocket("ws://echo");
             } else {
                 alert("SockJS");
-                websocket = new SockJS("/birth/sockJs/webSocketTypeTwo");
+                websocket = new SockJS("/birth/webSocketTypeTwo/1/2");
             }
             websocket.onopen = function (evnt) {
                 $("#tou").html("链接服务器成功!")

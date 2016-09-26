@@ -299,16 +299,21 @@
                 <artifactId>jetty-all</artifactId>
                 <version>8.1.16.v20140903</version>
             </dependency>
-
-            <!-- Jetty Webapp -->
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-webapp</artifactId>
                 <version>8.1.16.v20140903</version>
             </dependency>
 
-            <!--websocket 方案2-->
+            <!--支持jetty处理jsp-->
             <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jsp</artifactId>
+                <version>9.2.19.v20160908</version>
+            </dependency>
+
+            <!--websocket 方案2-->
+            <!--<dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-websocket-api</artifactId>
                 <version>7.0.47</version>
@@ -317,7 +322,7 @@
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
                 <version>7.0</version>
-            </dependency>
+            </dependency>-->
 
         </dependencies>
     </dependencyManagement>

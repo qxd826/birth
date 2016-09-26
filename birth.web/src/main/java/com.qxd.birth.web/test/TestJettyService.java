@@ -1,11 +1,13 @@
 package com.qxd.birth.web.test;
 
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 /**
  * Created by xiangqong.qu on 16/9/20 14:17.
  */
+@Slf4j
 public class TestJettyService {
 
     public static void main(String[] args) {
@@ -19,7 +21,6 @@ public class TestJettyService {
         context.setResourceBase("./birth.web/src/main/webapp");
         context.setParentLoaderPriority(true);
         server.setHandler(context);
-
         try {
             System.out.println("[HINT] Don't forget to set VM options \" -Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m -Djava.awt.headless=true \");");
             server.start();
