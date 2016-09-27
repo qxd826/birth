@@ -154,6 +154,15 @@
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
         </dependency>
+        <!-- Jetty Webapp -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-plus</artifactId>
+        </dependency>
         <!--jettyService 启动对jsp解析的支持 通过maven jetty插件启动没影响-->
         <!--<dependency>
             <groupId>org.eclipse.jetty</groupId>
