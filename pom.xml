@@ -300,6 +300,19 @@
                 <version>8.1.16.v20140903</version>
             </dependency>
 
+            <!-- Jetty Webapp -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>8.1.16.v20140903</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-plus</artifactId>
+                <version>6.1.26</version>
+            </dependency>
+
             <!--jettyService 启动对jsp解析的支持 通过maven jetty插件启动没影响-->
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
