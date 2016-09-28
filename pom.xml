@@ -151,7 +151,7 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <scope>test</scope>
-                <version>4.9</version>
+                <version>4.12</version>
             </dependency>
             <dependency>
                 <groupId>commons-dbutils</groupId>

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 @ContextConfiguration(locations = "classpath:junit-biz-context.xml")
-@TransactionConfiguration(transactionManager = "transactionManagerMaster", defaultRollback = true)  //选择数据库
+@TransactionConfiguration(transactionManager = "transactionManagerMaster", defaultRollback = false)  //选择数据库
 @Transactional
 public class BaseCaseTest {
     @Before

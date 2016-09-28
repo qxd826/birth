@@ -21,26 +21,28 @@ import java.util.Map;
 @Slf4j
 public class JunitTestOne extends BaseCaseTest {
 
-
     /**
      * 当编写测试方法时，经常会发现一些方法在执行前需要创建相同的对象
-     * 使用@Before注解一个public void 方法会使该方法在@Test注解方法被执行前执行（那么就可以在该方法中创建相同的对象）
+     * 使用@Before注解一个public void 方法会使该方法在@Test注解方法被执行前执行
+     * 有多少个@Test方法就会执行多少次
+     * (那么就可以在该方法中创建相同的对象)
      * 父类的@Before注解方法会在子类的@Before注解方法执行前执行
      */
     @Before
     public void before() {
-        log.info("before");
+        log.info(">>>>>>>>>>>>>>>>before");
     }
 
     /**
      * 如果在@Before注解方法中分配了额外的资源，那么在测试执行完后，需要释放分配的资源。
      * 使用@After注解一个public void方法会使该方法在@Test注解方法执行后被执行
-     * 即使在@Before注解方法、@Test注解方法中抛出了异常，所有的@After注解方法依然会被执行，见示例
+     * 有多少个@Test方法就会执行多少次
+     * 即使在@Before注解方法、@Test注解方法中抛出了异常，所有的@After注解方法依然会被执行,见示例
      * 父类中的@After注解方法会在子类@After注解方法执行后被执行
      */
     @After
     public void after() {
-        log.info("after");
+        log.info(">>>>>>>>>>>>>>>>after");
     }
 
     /**
@@ -50,7 +52,7 @@ public class JunitTestOne extends BaseCaseTest {
      */
     @BeforeClass
     public static void beforeClass() {
-        log.info("beforeClass");
+        log.info(">>>>>>>>>>>>>>>>beforeClass");
     }
 
     /**
@@ -61,12 +63,15 @@ public class JunitTestOne extends BaseCaseTest {
      */
     @AfterClass
     public static void afterClass() {
-        log.info("afterClass");
+        log.info(">>>>>>>>>>>>>>>>afterClass");
     }
 
     @Resource
     private UserService userService;
 
+    /**
+     * 数据源
+     */
     @Resource(name = "dataSourceMaster")
     private DataSource dataSource;
 

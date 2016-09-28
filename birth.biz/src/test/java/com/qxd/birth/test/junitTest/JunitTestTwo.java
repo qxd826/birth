@@ -1,5 +1,7 @@
 package com.qxd.birth.test.junitTest;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,10 +19,15 @@ import javax.sql.DataSource;
 @ContextConfiguration(locations = "classpath*:biz-context.xml")
 @TransactionConfiguration(transactionManager = "transactionManagerMaster", defaultRollback = false)  //选择数据库
 @Transactional
+@Slf4j
 public class JunitTestTwo {
 
     //配置数据源
     @Resource(name = "dataSourceMaster")
     private DataSource dataSource;
 
+    @Test
+    public void stepOne() {
+        log.info("stepOne");
+    }
 }
