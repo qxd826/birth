@@ -152,7 +152,7 @@
         return memo;
     };
 
-    // Return the first value which passes a truth test. Aliased as `detect`.
+    // Return the first value which passes a truth junitTest. Aliased as `detect`.
     _.find = _.detect = function (obj, predicate, context) {
         var result;
         any(obj, function (value, index, list) {
@@ -164,7 +164,7 @@
         return result;
     };
 
-    // Return all the elements that pass a truth test.
+    // Return all the elements that pass a truth junitTest.
     // Delegates to **ECMAScript 5**'s native `filter` if available.
     // Aliased as `select`.
     _.filter = _.select = function (obj, predicate, context) {
@@ -177,14 +177,14 @@
         return results;
     };
 
-    // Return all the elements for which a truth test fails.
+    // Return all the elements for which a truth junitTest fails.
     _.reject = function (obj, predicate, context) {
         return _.filter(obj, function (value, index, list) {
             return !predicate.call(context, value, index, list);
         }, context);
     };
 
-    // Determine whether all of the elements match a truth test.
+    // Determine whether all of the elements match a truth junitTest.
     // Delegates to **ECMAScript 5**'s native `every` if available.
     // Aliased as `all`.
     _.every = _.all = function (obj, predicate, context) {
@@ -198,7 +198,7 @@
         return !!result;
     };
 
-    // Determine if at least one element in the object matches a truth test.
+    // Determine if at least one element in the object matches a truth junitTest.
     // Delegates to **ECMAScript 5**'s native `some` if available.
     // Aliased as `any`.
     var any = _.some = _.any = function (obj, predicate, context) {

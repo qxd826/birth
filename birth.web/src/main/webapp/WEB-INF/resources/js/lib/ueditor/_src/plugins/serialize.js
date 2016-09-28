@@ -218,13 +218,13 @@ UE.plugins['serialize'] = function () {
 
                         while (!(dtd[currentNode.tag] || dtd['div'])['#']) {
                             //节点之间的空白不能当作节点处理
-//                                if(/^[ \t\r\n]+$/.test( text )){
+//                                if(/^[ \t\r\n]+$/.junitTest( text )){
 //                                    return;
 //                                }
                             if (tagEnd(currentNode)) continue;
                             currentNode = currentNode.parent;
                         }
-                        //if(/^[ \t\n\r]*/.test(text))
+                        //if(/^[ \t\n\r]*/.junitTest(text))
                         addChild({
                             type: 'text',
                             data: text

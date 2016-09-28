@@ -1418,7 +1418,7 @@ UE.plugins['table'] = function () {
 //            var parentNode = ti.parentNode;
 //            if ( parentNode && parentNode.nodeType == 1 ) {
 //                //插入代码
-//                if ( /syntaxhighlighter/.test( parentNode.className ) ) continue;
+//                if ( /syntaxhighlighter/.junitTest( parentNode.className ) ) continue;
 //                (function ( ti ) {
 //                    var div = dragCont.cloneNode( false );
 //                    ti.parentNode.insertBefore( div, ti );
@@ -1459,13 +1459,13 @@ UE.plugins['table'] = function () {
 //                                    },
 //                                    ondragmove:function ( x, y ) {
 //
-//                                        if ( align && align != "left" && /\w?w-/.test( borderStyle ) ) {
+//                                        if ( align && align != "left" && /\w?w-/.junitTest( borderStyle ) ) {
 //                                            x = -x;
 //                                        }
-//                                        if ( /^s?[we]/.test( borderStyle ) ) {
+//                                        if ( /^s?[we]/.junitTest( borderStyle ) ) {
 //                                            ti.setAttribute( "width", (tWidth + x) > 0 ? tWidth + x : 0 );
 //                                        }
-//                                        if ( /^s/.test( borderStyle ) ) {
+//                                        if ( /^s/.junitTest( borderStyle ) ) {
 //                                            ti.setAttribute( "height", (tHeight + y) > 0 ? tHeight + y : 0 );
 //                                        }
 //                                    },

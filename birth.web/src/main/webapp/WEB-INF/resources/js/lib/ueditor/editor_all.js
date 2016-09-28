@@ -296,15 +296,15 @@
          * @grammar UE.utils.defer(fn,delay)  =>fn   //延迟delay毫秒执行fn，返回fn
          * @grammar UE.utils.defer(fn,delay,exclusion)  =>fn   //延迟delay毫秒执行fn，若exclusion为真，则互斥执行fn
          * @example
-         * function test(){
+         * function com.qxd.birth.test.junitTest(){
      *     console.log("延迟输出！");
      * }
          * //非互斥延迟执行
-         * var testDefer = UE.utils.defer(test,1000);
+         * var testDefer = UE.utils.defer(com.qxd.birth.test.junitTest,1000);
          * testDefer();   =>  "延迟输出！";
          * testDefer();   =>  "延迟输出！";
          * //互斥延迟执行
-         * var testDefer1 = UE.utils.defer(test,1000,true);
+         * var testDefer1 = UE.utils.defer(com.qxd.birth.test.junitTest,1000,true);
          * testDefer1();   =>  //本次不执行
          * testDefer1();   =>  "延迟输出！";
          */
@@ -362,7 +362,7 @@
         /**
          * 将字符串list(以','分隔)或者数组list转成哈希对象
          * @name listToMap
-         * @grammar UE.utils.listToMap(list)  => Object  //Object形如{test:1,br:1,textarea:1}
+         * @grammar UE.utils.listToMap(list)  => Object  //Object形如{junitTest:1,br:1,textarea:1}
          */
         listToMap: function (list) {
             if (!list)return {};
@@ -433,7 +433,7 @@
          * @example
          * //指定加载到当前document中一个script文件，加载成功后执行function
          * utils.loadFile( document, {
-     *     src:"test.js",
+     *     src:"junitTest.js",
      *     tag:"script",
      *     type:"text/javascript",
      *     defer:"defer"
@@ -2046,7 +2046,7 @@
          * @grammar UE.dom.domUtils.removeAttributes(node,attrNames)
          * @example
          * //Before remove
-         * <span style="font-size:14px;" id="test" name="followMe">xxxxx</span>
+         * <span style="font-size:14px;" id="junitTest" name="followMe">xxxxx</span>
          * //Remove
          * UE.dom.domUtils.removeAttributes(node,["id","name"]);
          * //After remove
@@ -10742,13 +10742,13 @@
 
                             while (!(dtd[currentNode.tag] || dtd['div'])['#']) {
                                 //节点之间的空白不能当作节点处理
-//                                if(/^[ \t\r\n]+$/.test( text )){
+//                                if(/^[ \t\r\n]+$/.junitTest( text )){
 //                                    return;
 //                                }
                                 if (tagEnd(currentNode)) continue;
                                 currentNode = currentNode.parent;
                             }
-                            //if(/^[ \t\n\r]*/.test(text))
+                            //if(/^[ \t\n\r]*/.junitTest(text))
                             addChild({
                                 type: 'text',
                                 data: text
@@ -12854,7 +12854,7 @@
 //            var parentNode = ti.parentNode;
 //            if ( parentNode && parentNode.nodeType == 1 ) {
 //                //插入代码
-//                if ( /syntaxhighlighter/.test( parentNode.className ) ) continue;
+//                if ( /syntaxhighlighter/.junitTest( parentNode.className ) ) continue;
 //                (function ( ti ) {
 //                    var div = dragCont.cloneNode( false );
 //                    ti.parentNode.insertBefore( div, ti );
@@ -12895,13 +12895,13 @@
 //                                    },
 //                                    ondragmove:function ( x, y ) {
 //
-//                                        if ( align && align != "left" && /\w?w-/.test( borderStyle ) ) {
+//                                        if ( align && align != "left" && /\w?w-/.junitTest( borderStyle ) ) {
 //                                            x = -x;
 //                                        }
-//                                        if ( /^s?[we]/.test( borderStyle ) ) {
+//                                        if ( /^s?[we]/.junitTest( borderStyle ) ) {
 //                                            ti.setAttribute( "width", (tWidth + x) > 0 ? tWidth + x : 0 );
 //                                        }
-//                                        if ( /^s/.test( borderStyle ) ) {
+//                                        if ( /^s/.junitTest( borderStyle ) ) {
 //                                            ti.setAttribute( "height", (tHeight + y) > 0 ? tHeight + y : 0 );
 //                                        }
 //                                    },

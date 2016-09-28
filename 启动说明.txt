@@ -10,7 +10,7 @@ tomcat插件配置在birth.web模块目录下
 启动顺序:
 1. before launch:
 maven命令目录: /Users/admin/Documents/work/birth
-maven命令: clean install -Dmaven.test.skip -U -Dautoconfig.skip
+maven命令: clean install -Dmaven.com.qxd.birth.test.junitTest.skip -U -Dautoconfig.skip
 
 2. 启动
 maven命令目录: /Users/admin/Documents/work/birth/birth.web
@@ -24,7 +24,7 @@ jetty插件配置在birth父模块目录下
 启动顺序:
 1. before launch:
 maven命令目录: /Users/admin/Documents/work/birth
-maven命令: clean install -Dmaven.test.skip -U -Dautoconfig.skip
+maven命令: clean install -Dmaven.com.qxd.birth.test.junitTest.skip -U -Dautoconfig.skip
 
 2. 启动
 maven命令目录: /Users/admin/Documents/work/birth/birth.web

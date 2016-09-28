@@ -3788,7 +3788,7 @@
                     self._options.extend.call(self, self._options);
 
                     // show the initial image
-                    // first test for permalinks in history
+                    // first com.qxd.birth.test.junitTest for permalinks in history
                     if (/^[0-9]{1,4}$/.test(HASH) && Galleria.History) {
                         self.show(HASH, undef, true);
 
@@ -6605,7 +6605,7 @@
 
         var abs = M.abs;
 
-        // test for translate3d support
+        // com.qxd.birth.test.junitTest for translate3d support
         var has3d = Galleria.HAS3D = (function () {
 
             var el = doc.createElement('p'),
@@ -6770,7 +6770,7 @@
 
                 this.deltaX = touch[0].pageX - this.start.pageX;
 
-                // determine if scrolling test has run - one time test
+                // determine if scrolling com.qxd.birth.test.junitTest has run - one time com.qxd.birth.test.junitTest
                 if (this.isScrolling === null) {
                     this.isScrolling = !!(
                     this.isScrolling ||

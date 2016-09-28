@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                 'js/cors/*.js',
                 'js/*.js',
                 'server/node/server.js',
-                'test/test.js'
+                'com.qxd.birth.test.junitTest/com.qxd.birth.test.junitTest.js'
             ]
         }
     });
