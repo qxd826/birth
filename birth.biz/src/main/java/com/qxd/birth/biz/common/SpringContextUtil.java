@@ -1,4 +1,4 @@
-package com.qxd.birth.common.utils;
+package com.qxd.birth.biz.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

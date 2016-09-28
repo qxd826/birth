@@ -145,7 +145,7 @@ public class TestImage {
         //得到图片的二进制数据，以二进制封装得到数据，具有通用性
         byte[] data = ImageUtils.readInputStream(inStream);
 
-        byte[] targetResult = resize(data, 1, 800, 800);
+        byte[] targetResult = resize(data, 1, 800, 600);
 
         long endTime = System.currentTimeMillis();
         log.info("耗时 ms:{}", endTime - startTime);

@@ -11,17 +11,30 @@
     <packaging>jar</packaging>
 
     <name>birth.common</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -39,4 +52,17 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>qxd-snapshots</id>
+            <name>qxd snapshots</name>
+            <url>http://180.76.170.17:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>qxd-releases</id>
+            <name>qxd releases</name>
+            <url>http://180.76.170.17:8081/repository/maven-releases</url>
+        </repository>
+    </distributionManagement>
 </project>

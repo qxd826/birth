@@ -1,8 +1,8 @@
 package com.qxd.birth.service.Test;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
+/*import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;*/
 import lombok.extern.slf4j.Slf4j;
 
 import javax.swing.*;
@@ -76,14 +76,14 @@ public class TestCropImage {
         FileOutputStream out = new FileOutputStream(resizedFile);
 
         // Encodes image as a JPEG data stream
-        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+       /* JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
 
         JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(bufferedImage);
 
         param.setQuality(quality, true);
 
         encoder.setJPEGEncodeParam(param);
-        encoder.encode(bufferedImage);
+        encoder.encode(bufferedImage);*/
     }
 
     // Example usage
