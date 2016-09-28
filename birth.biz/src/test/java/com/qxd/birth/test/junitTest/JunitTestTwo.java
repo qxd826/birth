@@ -14,7 +14,6 @@ import javax.sql.DataSource;
  * Created by xiangqong.qu on 16/9/28 11:26.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@Component
 @ContextConfiguration(locations = "classpath*:biz-context.xml")
 @TransactionConfiguration(transactionManager = "transactionManagerMaster", defaultRollback = false)  //选择数据库
 @Transactional
@@ -23,6 +22,5 @@ public class JunitTestTwo {
     //配置数据源
     @Resource(name = "dataSourceMaster")
     private DataSource dataSource;
-
 
 }

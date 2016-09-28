@@ -74,7 +74,8 @@ public class JunitTestOne extends BaseCaseTest {
      * @Test注解的public void方法将会被当做测试用例
      * JUnit每次都会创建一个新的测试实例，然后调用@Test注解方法
      * 任何异常的抛出都会认为测试失败
-     * Test注解提供2个参数： 1.“expected”，定义测试方法应该抛出的异常，如果测试方法没有抛出异常或者抛出了一个不同的异常，测试失败
+     * Test注解提供2个参数:
+     * 1.“expected”，定义测试方法应该抛出的异常，如果测试方法没有抛出异常或者抛出了一个不同的异常，测试失败
      * 2.“timeout”，如果测试运行时间长于该定义时间，测试失败（单位为毫秒）
      */
     @Test
@@ -107,8 +108,6 @@ public class JunitTestOne extends BaseCaseTest {
 
     /**
      * “timeout”，如果测试运行时间长于该定义时间，测试失败（单位为毫秒）
-     *
-     * @throws Exception
      */
     @Test(timeout = 5000)
     public void timeOutTest() {
