@@ -1,8 +1,8 @@
-package com.qxd.birth.test.junitTest;
+package com.qxd.birth.biz.test.junitTest;
 
 import com.qxd.birth.biz.user.UserService;
 import com.qxd.birth.dal.entity.master.user.User;
-import com.qxd.birth.test.BaseCaseTest;
+import com.qxd.birth.biz.test.BaseCaseTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;

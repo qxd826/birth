@@ -1,4 +1,4 @@
-package com.qxd.birth.test.categoryTest;
+package com.qxd.birth.biz.test.categoryTest;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;

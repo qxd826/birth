@@ -127,7 +127,7 @@ public class TestImage {
     }
 
     public static void testResize() throws Exception {
-        String imageUrl = "http://tqmall-legend-img.oss-cn-hangzhou.aliyuncs.com/merchant/app/2016921/1_1474457406.jpg";
+        String imageUrl = "http://legendimg.tqmall.com/merchant/app/2016929/77_147511692522.jpg";
 
         long startTime = System.currentTimeMillis();
         InputStream inStream = null;

@@ -1,7 +1,7 @@
-package com.qxd.birth.test.suittest;
+package com.qxd.birth.biz.test.suittest;
 
-import com.qxd.birth.test.junitTest.JunitTestOne;
-import com.qxd.birth.test.junitTest.JunitTestTwo;
+import com.qxd.birth.biz.test.junitTest.JunitTestOne;
+import com.qxd.birth.biz.test.junitTest.JunitTestTwo;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

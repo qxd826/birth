@@ -1,33 +1,37 @@
-package com.qxd.birth.test.junitTest;
+package com.qxd.birth;
 
+import com.qxd.birth.biz.user.UserService;
+import com.qxd.birth.dal.entity.master.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.stereotype.Component;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 /**
- * Created by xiangqong.qu on 16/9/28 11:26.
+ * Created by xiangqong.qu on 16/9/29 19:58.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:biz-context.xml")
+@Slf4j
+@ContextConfiguration(locations = "classpath:junit-service-context.xml")
 @TransactionConfiguration(transactionManager = "transactionManagerMaster", defaultRollback = false)  //选择数据库
 @Transactional
-@Slf4j
-public class JunitTestTwo {
+public class ServiceTest {
 
-    //配置数据源
-    @Resource(name = "dataSourceMaster")
-    private DataSource dataSource;
+    @Resource
+    private UserService userService;
 
     @Test
-    public void stepOne() {
-        log.info("stepOne");
+    @Rollback
+    public void addUserServiceTest() {
+        User user = new User();
+        user.setName("xyy");
+        user.setMobile("15158116456");
+        userService.saveUser(user);
     }
 }

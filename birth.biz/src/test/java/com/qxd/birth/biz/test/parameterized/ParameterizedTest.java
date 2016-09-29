@@ -1,4 +1,4 @@
-package com.qxd.birth.test.parameterized;
+package com.qxd.birth.biz.test.parameterized;
 
 import lombok.Data;
 import org.junit.Assert;
