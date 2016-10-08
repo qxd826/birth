@@ -1,0 +1,4 @@
+1.birth.biz  test 目录中有 junit测试的 用法用例.
+2.birth.web  main.web 目录中有 socket测试用例。基于spring的
+             websocket-tomcat分支 是基于tomcat的
+3.test文件夹主要是测试目录

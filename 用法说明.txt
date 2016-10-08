@@ -1,5 +1,3 @@
-test文件夹主要是测试目录
-
 在get方法中 尽量使用 PathVariable 注解
 
 事务主要使用@Transactional 注解
