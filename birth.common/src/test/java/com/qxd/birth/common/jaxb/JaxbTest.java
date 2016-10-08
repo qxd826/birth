@@ -1,14 +1,11 @@
-package com.qxd.birth.common.Jaxb;
+package com.qxd.birth.common.jaxb;
 
-import com.qxd.birth.common.utils.JaxbUtil;
+import com.qxd.birth.common.BaseTest;
 import com.qxd.birth.common.utils.XmlUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +13,8 @@ import java.util.List;
 /**
  * Created by xiangqong.qu on 16/10/8 14:31.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
-@ContextConfiguration(locations = "classpath:junit-common-context.xml")
-public class JaxbTest {
+public class JaxbTest extends BaseTest {
 
     @Before
     public void before() {

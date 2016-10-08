@@ -1,4 +1,4 @@
-package com.qxd.birth.common.Jaxb;
+package com.qxd.birth.common.jaxb;
 
 import lombok.Setter;
 import lombok.ToString;

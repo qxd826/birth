@@ -255,4 +255,73 @@ public class ImageUtils {
         }
         return pathMap;
     }
+
+
+    /**
+     * 图片压缩
+     *
+     * @param source  源文件
+     * @param quality 质量压缩比
+     * @param targetW 新的长度
+     * @param targetH 新的宽度
+     *
+     * @return
+     */
+    public static byte[] resize(byte[] source, float quality, int targetW, int targetH) throws IOException {
+        InputStream inputStream = new ByteArrayInputStream(source);
+        BufferedImage bufferedImageSource = ImageIO.read(inputStream);
+        byte[] result = null;
+        if (null != bufferedImageSource) {
+            int oldW = bufferedImageSource.getWidth();
+            // 得到源图宽
+            int oldH = bufferedImageSource.getHeight();
+            // 得到源图长
+            int newW = 0;
+            // 新图的宽
+            int newH = 0;
+            // 新图的长
+
+            if (targetH == 0 || targetW == 0) {
+                targetH = oldH;
+                targetW = oldW;
+            }
+            double w2 = (oldW * 1.00) / (targetW * 1.00);
+            double h2 = (oldH * 1.00) / (targetH * 1.00);
+            // 根据图片尺寸压缩比得到新图的尺寸
+            if (oldW > targetW) {
+                newW = (int) Math.round(oldW / w2);
+            } else {
+                newW = oldW;
+            }
+            if (oldH > targetH) {
+                newH = (int) Math.round(oldH / h2);//计算新图长宽
+            } else {
+                newH = oldH;
+            }
+
+            BufferedImage imageSave = null;
+            // 判断输入图片的类型
+            switch (bufferedImageSource.getType()) {
+                case 13:
+                    //png,gif
+                    imageSave = new BufferedImage(newW, newH, BufferedImage.TYPE_4BYTE_ABGR);
+                    break;
+                default:
+                    imageSave = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_RGB);
+                    break;
+            }
+
+            Graphics2D g = imageSave.createGraphics();
+            // 从原图上取颜色绘制新图
+            g.drawImage(bufferedImageSource, 0, 0, oldW, oldH, null);
+            g.dispose();
+            // 根据图片尺寸压缩比得到新图的尺寸
+            imageSave.getGraphics().drawImage(bufferedImageSource.getScaledInstance(newW, newH, Image.SCALE_SMOOTH), 0, 0, null);
+
+            ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+            ImageIO.write(imageSave, "jpg", outStream);
+            result = outStream.toByteArray();
+        }
+        return result;
+    }
 }
