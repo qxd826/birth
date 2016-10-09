@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by xiangqong.qu on 16/9/19 17:24.
  */
-public class ArrayUtils {
+public class ArrayUtil {
 
 
     /**

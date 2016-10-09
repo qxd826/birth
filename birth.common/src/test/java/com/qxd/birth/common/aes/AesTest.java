@@ -1,7 +1,7 @@
 package com.qxd.birth.common.aes;
 
 import com.qxd.birth.common.BaseTest;
-import com.qxd.birth.common.utils.AESUtils;
+import com.qxd.birth.common.utils.AESUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,12 +16,12 @@ public class AesTest extends BaseTest {
     @Test
     public void aesTest() {
         String s = "ahaihdaofhoafoaad飒飒水电费是否!#$!%@$^$%&%^*&*)*()?{}{|.''\';;;k;kp:<>?/";
-        String enStr = AESUtils.encrypt(s, testKey);
+        String enStr = AESUtil.encrypt(s, testKey);
         log.info("enStr:{}", enStr);
 
         enStr = enStr.replaceAll("&&", ",");
 
-        String deStr = AESUtils.decrypt(enStr, testKey);
+        String deStr = AESUtil.decrypt(enStr, testKey);
         log.info("deStr:{}", deStr);
 
         Assert.assertEquals(s, deStr);

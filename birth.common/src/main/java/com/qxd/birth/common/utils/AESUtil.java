@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by xiangqong.qu on 16/9/12 16 45.
  */
 @Slf4j
-public class AESUtils {
+public class AESUtil {
     private static final String defaultCharset = "UTF-8";
     private static final String KEY_AES = "AES";
     private static final String KEY_MD5 = "MD5";

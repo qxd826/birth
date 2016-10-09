@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by xiangdong.qu on 16/9/8 10:40.
  */
 @Slf4j
-public class ImageUtils {
+public class ImageUtil {
     //连接超时
     private final static int connTimeOut = 3 * 1000;
     //读取超时

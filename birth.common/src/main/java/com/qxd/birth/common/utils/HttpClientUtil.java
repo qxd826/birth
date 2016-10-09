@@ -1,11 +1,17 @@
 package com.qxd.birth.common.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Map;
 
 /**
  * Created by xiangqong.qu on 16/9/30 16:26.
@@ -15,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
  * 注意:
  * base64过的数据 经过网络传输时 最好进行URLEncoder.encode解决 base64数据经过网络传输后 空格的问题
  */
+@Slf4j
 public class HttpClientUtil {
 
     //默认编码格式
@@ -56,6 +63,21 @@ public class HttpClientUtil {
         return t;
     }
 
+
+    /**
+     * post 请求 默认编码utf-8
+     *
+     * @param xmlUndwrtData xml格式数据
+     * @param url           请求链接
+     *
+     * @return
+     *
+     * @throws Exception
+     */
+    public static String sendXmlData(String xmlUndwrtData, String url) throws Exception {
+        return sendXmlData(xmlUndwrtData, url, encoding);
+    }
+
     /**
      * post 请求
      *
@@ -94,18 +116,50 @@ public class HttpClientUtil {
         return new String(bs, encoding);
     }
 
-
     /**
-     * post 请求 默认编码utf-8
+     * http post 请求
      *
-     * @param xmlUndwrtData xml格式数据
-     * @param url           请求链接
+     * @param data     请求数据
+     * @param url      请求链接
+     * @param encoding 编码格式
      *
      * @return
      *
      * @throws Exception
      */
-    public static String sendXmlData(String xmlUndwrtData, String url) throws Exception {
-        return sendXmlData(xmlUndwrtData, url, encoding);
+    public static String sendData(Object data, String url, String encoding) throws Exception {
+        Map<String, Object> beanMap = MBeanUtil.bean2Map(data);
+        NameValuePair[] param = new NameValuePair[beanMap.size()];
+        int i = 0;
+        for (Map.Entry<String, Object> entity : beanMap.entrySet()) {
+            NameValuePair nameValuePair = new NameValuePair();
+            nameValuePair.setName(entity.getKey());
+            nameValuePair.setValue(entity.getValue().toString());
+            if (i < beanMap.size()) {
+                param[i++] = nameValuePair;
+            }
+        }
+        if (i != beanMap.size()) {
+            log.error("httpclient post [参数错误]");
+            return null;
+        }
+        StringBuffer resultBuffer = new StringBuffer();
+        try {
+            String contentType = "application/x-www-form-urlencoded;charset=" + encoding;
+            HttpClient client = new HttpClient();
+            PostMethod postMethod = new PostMethod(url);
+            postMethod.setRequestHeader("Content-Type", contentType);
+            postMethod.setRequestBody(param);
+            postMethod.releaseConnection();
+            client.executeMethod(postMethod);
+            String line;
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(postMethod.getResponseBodyAsStream(), "UTF-8"));
+            while ((line = bufferedReader.readLine()) != null) {
+                resultBuffer.append(line);
+            }
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+        return resultBuffer.toString();
     }
 }
