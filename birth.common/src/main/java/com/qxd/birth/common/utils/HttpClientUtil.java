@@ -119,7 +119,8 @@ public class HttpClientUtil {
     /**
      * http post 请求
      *
-     * @param data     请求数据
+     * @param data     请求数据 data对象 不包括基本对象 只适合处理单层对象
+     *                 基本对象例如 Integer,Long,Boolean,String
      * @param url      请求链接
      * @param encoding 编码格式
      *
@@ -143,10 +144,16 @@ public class HttpClientUtil {
             log.error("httpclient post [参数错误]");
             return null;
         }
+        int intConnectTimeout = 6000;
+        int intReadTimeout = 60000;
         StringBuffer resultBuffer = new StringBuffer();
         try {
             String contentType = "application/x-www-form-urlencoded;charset=" + encoding;
             HttpClient client = new HttpClient();
+            HttpConnectionManagerParams managerParams = client.getHttpConnectionManager().getParams();
+            managerParams.setConnectionTimeout(intConnectTimeout);
+            managerParams.setSoTimeout(intReadTimeout);
+
             PostMethod postMethod = new PostMethod(url);
             postMethod.setRequestHeader("Content-Type", contentType);
             postMethod.setRequestBody(param);

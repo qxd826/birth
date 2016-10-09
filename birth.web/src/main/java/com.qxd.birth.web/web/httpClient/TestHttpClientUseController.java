@@ -1,5 +1,6 @@
 package com.qxd.birth.web.web.httpClient;
 
+import com.qxd.birth.common.common.Result;
 import com.qxd.birth.common.utils.HttpClientUtil;
 import com.qxd.birth.dal.entity.master.user.User;
 import com.qxd.birth.web.base.BaseController;
@@ -57,14 +58,27 @@ public class TestHttpClientUseController extends BaseController {
     @RequestMapping(value = "/testPost", method = RequestMethod.GET)
     @ResponseBody
     public Object sendPost(HttpServletRequest request) {
+        Object data = null;
         User user = new User();
         user.setName("qxd");
         user.setMobile("15158116453");
         user.setId(1L);
+        user.setDie(Boolean.TRUE);
+
+        Result mulData = Result.wrapSuccessfulResult(user);
+        mulData.setCode("0001");
+        mulData.setErrorMsg("0002");
+        mulData.setSuccess(Boolean.TRUE);
+
+        data = user;
+        //data = "shskks";
+        //data = Boolean.TRUE;
+        //data = 1L;
+        //data = mulData;
 
         String result = null;
         try {
-            result = HttpClientUtil.sendData(user, "http://localhost:8088/birth/httpClient/getPost", "UTF-8");
+            result = HttpClientUtil.sendData(data, "http://localhost:8088/birth/httpClient/getPost", "UTF-8");
         } catch (Exception e) {
             log.error("httpclient post 测试失败", e);
         }
