@@ -789,7 +789,7 @@ var domUtils = dom.domUtils = {
      * @grammar UE.dom.domUtils.removeAttributes(node,attrNames)
      * @example
      * //Before remove
-     * <span style="font-size:14px;" id="test" name="followMe">xxxxx</span>
+     * <span style="font-size:14px;" id="junitTest" name="followMe">xxxxx</span>
      * //Remove
      * UE.dom.domUtils.removeAttributes(node,["id","name"]);
      * //After remove

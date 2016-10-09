@@ -7,7 +7,7 @@ import java.io.OutputStream;
 /**
  * Created by QXD on 2015/4/24.
  */
-public class Base64Utils {
+public class Base64Util {
     private static final char[] legalChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
 
     /**

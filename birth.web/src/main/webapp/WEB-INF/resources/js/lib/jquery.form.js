@@ -1214,7 +1214,7 @@
             }
             else if (includeHidden) {
                 // includeHidden can be the value true, or it can be a selector string
-                // indicating a special test; for example:
+                // indicating a special com.qxd.birth.test.junitTest; for example:
                 //  $('#myForm').clearForm('.special:hidden')
                 // the above would clean hidden inputs that have the class of 'special'
                 if ((includeHidden === true && /hidden/.test(t)) ||

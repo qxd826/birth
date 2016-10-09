@@ -10,6 +10,18 @@
     <!-- data-source 数据源-->
     <import resource="classpath:data-source.xml"/>
 
+
+    <!-- 在使用SpringMvc的时候，配置文件中我们经常看到 annotation-driven 这样的注解，
+    其含义就是支持注解，一般根据前缀 tx、mvc 等也能很直白的理解出来分别的作用。
+    <tx:annotation-driven/> 就是支持事务注解的（@Transactional） 、
+    <mvc:annotation-driven> 就是支持mvc注解的，说白了就是使Controller中可以使用MVC的各种注解。
+    首先，<tx:annotation-driven/>  会有一个属性来指定使用哪个事务管理器，
+    如：<tx:annotation-driven transaction-manager="transactionManager" />。
+    然后事务管理器 transactionManager 会引用 dataSource
+    （如果我们使用JPA或Hibernate，也需要指定一个 entityManagerFactory ），
+    dataSouce 肯定就是直接对数据库的了。
+    这样逐层引用下去，所以我们使用@Transactionl 注解可以控制事务就通俗易懂了。
+    另外要提一下的就是 spring 是使用 aop 通过 asm 操作java字节码的方式来实现对方法的前后事务管理的。-->
     <tx:annotation-driven transaction-manager="transactionManagerMaster"/>
     <bean id="transactionManagerMaster" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSourceMaster"/>

@@ -9,7 +9,7 @@
  * http://www.opensource.org/licenses/MIT
  */
 
-/* global $, QUnit, window, document, expect, module, test, asyncTest, start, ok, strictEqual, notStrictEqual */
+/* global $, QUnit, window, document, expect, module, com.qxd.birth.test.junitTest, asyncTest, start, ok, strictEqual, notStrictEqual */
 
 $(function () {
     // jshint nomen:false
@@ -959,7 +959,7 @@ $(function () {
         expect(1);
         $('#fileupload').fileupload({
             send: function () {
-                ok(true, 'This test should not run');
+                ok(true, 'This com.qxd.birth.test.junitTest should not run');
                 return false;
             }
         })

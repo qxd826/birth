@@ -1,6 +1,6 @@
 package com.qxd.birth.service.Test;
 
-import com.qxd.birth.common.utils.ImageUtils;
+import com.qxd.birth.common.utils.ImageUtil;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -19,7 +19,7 @@ import java.net.URL;
 public class TestImage {
 
     public static void test() {
-        String base64Str = ImageUtils.getImageBase64Str("http://www.easyicon.net/api/resizeApi.php?id=1189109&size=48");
+        String base64Str = ImageUtil.getImageBase64Str("http://www.easyicon.net/api/resizeApi.php?id=1189109&size=48");
         BASE64Decoder decoder = new BASE64Decoder();
         BASE64Encoder encoder = new BASE64Encoder();
         try {
@@ -127,7 +127,7 @@ public class TestImage {
     }
 
     public static void testResize() throws Exception {
-        String imageUrl = "http://tqmall-legend-img.oss-cn-hangzhou.aliyuncs.com/merchant/app/2016921/1_1474457406.jpg";
+        String imageUrl = "http://legendimg.tqmall.com/merchant/app/2016929/77_147511692522.jpg";
 
         long startTime = System.currentTimeMillis();
         InputStream inStream = null;
@@ -143,9 +143,9 @@ public class TestImage {
         //通过输入流获取图片数据
         inStream = conn.getInputStream();
         //得到图片的二进制数据，以二进制封装得到数据，具有通用性
-        byte[] data = ImageUtils.readInputStream(inStream);
+        byte[] data = ImageUtil.readInputStream(inStream);
 
-        byte[] targetResult = resize(data, 1, 800, 800);
+        byte[] targetResult = resize(data, 1, 800, 600);
 
         long endTime = System.currentTimeMillis();
         log.info("耗时 ms:{}", endTime - startTime);

@@ -14,4 +14,5 @@ public class User extends BaseEntity {
     private String name;//用户名
     private String mobile;//用户电话号码
 
+    private Boolean die; //是否死亡
 }

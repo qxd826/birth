@@ -3,7 +3,9 @@ package com.qxd.birth.web.app;
 import com.qxd.birth.common.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -14,10 +16,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 public class LoginController {
 
-    @RequestMapping("/loginIn")
+
+    /**
+     * get 方法中尽量使用 PathVariable
+     *
+     * @param account
+     * @param password
+     *
+     * @return
+     */
+    @RequestMapping(value = "/loginIn/{account}/{password}", method = RequestMethod.GET)
     @ResponseBody
-    public Result login() {
-        return Result.wrapSuccessfulResult("true loginIn");
+    public Result login(@PathVariable String account, @PathVariable String password) {
+        return Result.wrapSuccessfulResult("true loginIn:" + account + "  password:" + password);
     }
 
     @RequestMapping("/loginOut")

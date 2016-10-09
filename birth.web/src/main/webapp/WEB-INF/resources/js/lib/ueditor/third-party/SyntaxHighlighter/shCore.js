@@ -322,7 +322,7 @@ if (!XRegExp) {
             return match;
         };
 
-        // Don't override `test` if it won't change anything
+        // Don't override `com.qxd.birth.test.junitTest` if it won't change anything
         if (!compliantLastIndexIncrement) {
             // Fix browser bug in native method
             RegExp.prototype.test = function (str) {
@@ -2354,7 +2354,7 @@ if (!XRegExp) {
                     'mv netstat nice nl nohup nslookup open op passwd paste pathchk ping popd pr printcap ' +
                     'printenv printf ps pushd pwd quota quotacheck quotactl ram rcp read readonly renice ' +
                     'remsync rm rmdir rsync screen scp sdiff sed select seq set sftp shift shopt shutdown ' +
-                    'sleep sort source split ssh strace su sudo sum symlink sync tail tar tee test time ' +
+                    'sleep sort source split ssh strace su sudo sum symlink sync tail tar tee com.qxd.birth.test.junitTest time ' +
                     'times touch top traceroute trap tr true tsort tty type ulimit umask umount unalias ' +
                     'uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir ' +
                     'vi watch wc whereis which who whoami Wget xargs yes'

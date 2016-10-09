@@ -19,6 +19,7 @@
         <module>birth.dal</module>
         <module>birth.common</module>
         <module>birth.service</module>
+        <module>birth.client</module>
     </modules>
 
     <properties>
@@ -26,6 +27,7 @@
         <java-version>1.7</java-version>
         <org.springframework-version>4.0.5.RELEASE</org.springframework-version>
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
+        <birth.client.version>1.0</birth.client.version>
     </properties>
 
     <build>
@@ -88,19 +90,20 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <!-- client 依赖-->
+            <dependency>
+                <groupId>com.qxd.birth</groupId>
+                <artifactId>birth.client</artifactId>
+                <version>${birth.client.version}</version>
+            </dependency>
+
+            <!-- 通用依赖 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.3.2</version>
             </dependency>
 
-            <!--junit 测试包-->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>3.8.1</version>
-                <scope>test</scope>
-            </dependency>
             <!--spring 依赖包-->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -143,16 +146,28 @@
                 <version>${org.springframework-version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-commons</artifactId>
-                <version>1.8.0.RELEASE</version>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${org.springframework-version}</version>
             </dependency>
-
+            <!--junit单测-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbutils</groupId>
+                <artifactId>commons-dbutils</artifactId>
+                <version>1.6</version>
+            </dependency>
             <!--servlet依赖包-->
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -198,6 +213,20 @@
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
                 <version>1.4_3</version>
+            </dependency>
+
+            <!-- httpclient -->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+
+            <!-- jaxb dom解析xml-->
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
             </dependency>
 
             <!--lombok-->
@@ -310,7 +339,7 @@
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-plus</artifactId>
-                <version>6.1.26</version>
+                <version>9.2.9.v20150224</version>
             </dependency>
 
             <!--jettyService 启动对jsp解析的支持 通过maven jetty插件启动没影响-->

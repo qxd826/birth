@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="dal">
+        <!--主数据库配置-->
+        <property name="master.birth.jdbc.driverClassName" defaultValue="com.mysql.jdbc.Driver" description="数据库驱动"/>
+        <property name="master.birth.jdbc.url"
+                  defaultValue="jdbc:mysql://127.0.0.1:3306/love?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull"
+                  description="数据库链接地址"/>
+        <property name="master.birth.jdbc.username" defaultValue="root" description="数据库登录用户名"/>
+        <property name="master.birth.jdbc.password" defaultValue="123" description="数据库登录密码"/>
+        <!--从数据库配置-->
+        <property name="slave.birth.jdbc.driverClassName" defaultValue="com.mysql.jdbc.Driver" description="数据库驱动"/>
+        <property name="slave.birth.jdbc.url"
+                  defaultValue="jdbc:mysql://127.0.0.1:3306/love?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull"
+                  description="数据库链接地址"/>
+        <property name="slave.birth.jdbc.username" defaultValue="root" description="数据库登录用户名"/>
+        <property name="slave.birth.jdbc.password" defaultValue="123" description="数据库登录密码"/>
+    </group>
+    <script>
+        <generate template="jdbc.properties.vm" destfile="jdbc.properties" charset="UTF-8"/>
+    </script>
+</config>

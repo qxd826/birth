@@ -110,15 +110,15 @@ var utils = UE.utils = {
      * @grammar UE.utils.defer(fn,delay)  =>fn   //延迟delay毫秒执行fn，返回fn
      * @grammar UE.utils.defer(fn,delay,exclusion)  =>fn   //延迟delay毫秒执行fn，若exclusion为真，则互斥执行fn
      * @example
-     * function test(){
+     * function com.qxd.birth.test.junitTest(){
      *     console.log("延迟输出！");
      * }
      * //非互斥延迟执行
-     * var testDefer = UE.utils.defer(test,1000);
+     * var testDefer = UE.utils.defer(com.qxd.birth.test.junitTest,1000);
      * testDefer();   =>  "延迟输出！";
      * testDefer();   =>  "延迟输出！";
      * //互斥延迟执行
-     * var testDefer1 = UE.utils.defer(test,1000,true);
+     * var testDefer1 = UE.utils.defer(com.qxd.birth.test.junitTest,1000,true);
      * testDefer1();   =>  //本次不执行
      * testDefer1();   =>  "延迟输出！";
      */
@@ -176,7 +176,7 @@ var utils = UE.utils = {
     /**
      * 将字符串list(以','分隔)或者数组list转成哈希对象
      * @name listToMap
-     * @grammar UE.utils.listToMap(list)  => Object  //Object形如{test:1,br:1,textarea:1}
+     * @grammar UE.utils.listToMap(list)  => Object  //Object形如{junitTest:1,br:1,textarea:1}
      */
     listToMap: function (list) {
         if (!list)return {};
@@ -247,7 +247,7 @@ var utils = UE.utils = {
      * @example
      * //指定加载到当前document中一个script文件，加载成功后执行function
      * utils.loadFile( document, {
-     *     src:"test.js",
+     *     src:"junitTest.js",
      *     tag:"script",
      *     type:"text/javascript",
      *     defer:"defer"
