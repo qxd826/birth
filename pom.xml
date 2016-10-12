@@ -370,6 +370,13 @@
                 <artifactId>spring-messaging</artifactId>
                 <version>${org.springframework-version}</version>
             </dependency>
+
+            <!--二维码/条形码生成解析-->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>3.3.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>

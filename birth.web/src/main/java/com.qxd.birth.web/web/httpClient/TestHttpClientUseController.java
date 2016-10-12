@@ -78,7 +78,7 @@ public class TestHttpClientUseController extends BaseController {
 
         String result = null;
         try {
-            result = HttpClientUtil.sendData(data, "http://localhost:8088/birth/httpClient/getPost", "UTF-8");
+            result = HttpClientUtil.sendData(data, "http://180.76.170.17:8080/birth/httpClient/getPost", "UTF-8");
         } catch (Exception e) {
             log.error("httpclient post 测试失败", e);
         }

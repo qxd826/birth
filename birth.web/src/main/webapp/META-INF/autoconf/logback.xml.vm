@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <configuration debug="false">
-    <property name="birth_log_pattern"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n" />
+    <property name="birth_log_pattern" value="${birth_log_pattern}"/>
     <property name="LOG_CHARSET" value="${birth_log_charset}" />
 
     <!--
