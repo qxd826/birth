@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 /**
  * Created by xiangDong.qu on 16/2/17.
  */
-@EqualsAndHashCode(callSuper = false)
 @Data
 public class User extends BaseEntity {
 
@@ -15,4 +14,6 @@ public class User extends BaseEntity {
     private String mobile;//用户电话号码
 
     private Boolean die; //是否死亡
+
+    private int testMock = 2;
 }

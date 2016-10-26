@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.junit.*;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 
 import javax.annotation.Resource;
@@ -68,6 +69,9 @@ public class JunitTestOne extends BaseCaseTest {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * 数据源
