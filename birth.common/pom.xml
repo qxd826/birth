@@ -31,6 +31,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--
+            这段配置将会忽略单元测试的错误而继续构建
+            命令行：$ mvn test -Dmaven.test.failure.ignore=true
+
+            当 Surefire 插件到达 test 目标的时候，如果 maven.test.skip 设置为 true ，它就会跳过单元测试。
+            另一种配置 Maven 跳过单元测试的方法是给你项目的 pom.xml 添加这个配置。
+            你需要为你的 build 添加 plugin 元素。
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

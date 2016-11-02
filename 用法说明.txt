@@ -26,3 +26,56 @@
 意思就是：<tx:annoation-driven/>只会查找和它在相同的应用上下文件中定义的bean上面的@Transactional注解，如果你把它放在Dispatcher的应用上下文中，它只检查控制器（Controller）上的@Transactional注解，而不是你services上的@Transactional注解。
 
 所以，可以确定的是我们是可以在Controller上使用事务注解的，但是我们不推荐这样做（本人也从来没有这样做过），这里只是为了说明spring对<tx:annotation-driven/>的使用。
+
+
+
+maven中默认的情况下如果单元测试有错误，将会停止构建工程，如果想忽略错误而继续构建的话只需在pom.xml文件中添加下面的配置即可：
+<project>
+  [...]
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  [...]
+</project>
+这段配置将会忽略单元测试的错误而继续构建。
+命令行：$ mvn test -Dmaven.test.failure.ignore=true
+
+
+maven中跳过单元测试
+你可能想要配置 Maven 使其完全跳过单元测试。 可能你有一个很大的系统，单元测试需要花好多分钟来完成，而你不想在生成最终输出前等单元测试完成。
+你可能正工作在一个遗留系统上面，这个系统有一系列的失败的单元测试，你可能仅仅想要生成一个 JAR 而不是去修复所有的单元测试。
+Maven 提供了跳过单元测试的能力，只需要使用 Surefire 插件的 skip 参数。 在命令行，只要简单的给任何目标添加 maven.test.skip 属性就能跳过测试：
+
+$ mvn install -Dmaven.test.skip=true
+...
+[INFO] [compiler:testCompile]
+[INFO] Not compiling test sources
+[INFO] [surefire:test]
+[INFO] Tests are skipped.
+...
+
+当 Surefire 插件到达 test 目标的时候，如果 maven.test.skip 设置为 true ，它就会跳过单元测试。
+另一种配置 Maven 跳过单元测试的方法是给你项目的 pom.xml 添加这个配置。 你需要为你的 build 添加 plugin 元素。
+ <project>
+  [...]
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  [...]
+</project>
