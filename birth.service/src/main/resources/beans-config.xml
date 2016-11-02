@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
     <!--redis 客户端操作对象-->
-    <bean id="jedisPoolUtil" class="com.qxd.birth.common.utils.JedisPoolUtil">
+    <bean id="jedisPoolUtil" class="com.qxd.birth.biz.common.JedisPoolUtil">
         <property name="slaveHost" value="${birth.slave.jedis.host}"/>
         <property name="slavePort" value="${birth.slave.jedis.port}"/>
         <property name="slavePassword" value="${birth.slave.jedis.pwd}"/>

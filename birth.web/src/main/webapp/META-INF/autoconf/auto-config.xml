@@ -8,9 +8,9 @@
                   description="应用的context name"/>
         <!--log-->
         <!--log根目录 /logs-->
-        <property name="birth.log.root" defaultValue="${birth.app.root}/logs"
+        <property name="birth.log.root" defaultValue="${birth.log.root}/logs"
                   description="log文件目录"/>
-        <property name="birth.log.bak" defaultValue="${birth.app.root}/logs"
+        <property name="birth.log.bak" defaultValue="${birth.log.root}/logs"
                   description="log备份文件目录"/>
         <property name="birth.log.level" defaultValue="INFO"
                   description="log级别"/>
@@ -23,9 +23,9 @@
     </group>
     <!-- 应用相应的模版文件 生成对应的文件到 相应的目录 -->
     <script>
-        <generate template="application.properties.vm" destfile="application.properties"
+        <generate template="application.properties.vm" destfile="WEB-INF/classes/application.properties"
                   charset="UTF-8"/>
-        <generate template="logback.xml.vm" destfile="logback.xml"
+        <generate template="logback.xml.vm" destfile="WEB-INF/classes/logback.xml"
                   charset="UTF-8"/>
     </script>
 </config>

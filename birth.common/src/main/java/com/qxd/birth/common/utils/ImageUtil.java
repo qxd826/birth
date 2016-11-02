@@ -24,6 +24,46 @@ public class ImageUtil {
     private final static int readTimeOut = 6 * 10000;
 
     /**
+     * 将图片对象转为数组对象
+     *
+     * @param bufferedImage 图片对象
+     * @param imageType     图片类别 jpg,png等
+     *
+     * @return
+     */
+    public static byte[] imageToByteArray(BufferedImage bufferedImage, String imageType) {
+        if (null == bufferedImage || StringUtils.isBlank(imageType)) {
+            return null;
+        }
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bufferedImage, imageType, byteArrayOutputStream);
+        } catch (Exception e) {
+            log.error("图片转为byte数组失败", e);
+            return null;
+        }
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    /**
+     * 将图片数组转化为图片对象
+     *
+     * @param imageByteArray 图片数组
+     *
+     * @return
+     */
+    public static BufferedImage byteArrayToImage(byte[] imageByteArray) {
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(imageByteArray));
+        } catch (Exception e) {
+            log.error("图片数组转化为image失败", e);
+            return null;
+        }
+        return bufferedImage;
+    }
+
+    /**
      * 获取图片base64
      *
      * @param imageUrl

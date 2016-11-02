@@ -1,4 +1,4 @@
-package com.qxd.birth.common.utils;
+package com.qxd.birth.biz.common;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

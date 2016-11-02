@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config description="">
+    <group name="biz">
+
+    </group>
+    <script>
+        <generate template="biz.properties.vm" destfile="biz.properties" charset="UTF-8"/>
+    </script>
+</config>
