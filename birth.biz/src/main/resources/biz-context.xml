@@ -5,6 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+    <!-- order越小越先加载，此项目最小从10开始，方便后面插队 -->
+    <context:property-placeholder order="20" ignore-unresolvable="true" location="classpath:biz.properties"/>
+
     <!--dal-->
     <import resource="classpath*:dal-context.xml"/>
+
 </beans>

@@ -27,6 +27,10 @@
             <artifactId>birth.biz</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.qxd.birth</groupId>
+            <artifactId>birth.client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>

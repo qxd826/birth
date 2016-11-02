@@ -5,7 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <context:property-placeholder order="20" location="classpath:service-context.properties"/>
+    <context:property-placeholder order="30" ignore-unresolvable="true"
+                                  location="classpath:service-context.properties"/>
     <!--biz-->
     <import resource="classpath*:biz-context.xml"/>
 
