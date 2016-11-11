@@ -1,7 +1,5 @@
 package com.qxd.birth.common.exception;
 
-import java.awt.*;
-
 /**
  * Created by xiangqong.qu on 16/10/10 16:35.
  */
