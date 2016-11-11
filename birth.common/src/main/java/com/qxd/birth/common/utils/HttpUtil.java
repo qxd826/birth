@@ -47,9 +47,11 @@ public class HttpUtil {
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
+            StringBuffer stringBuffer = new StringBuffer(2048);
             while ((line = in.readLine()) != null) {
-                result += line;
+                stringBuffer.append(line);
             }
+            result = stringBuffer.toString();
         } catch (Exception e) {
             log.error("发送GET请求出现异常", e);
         }
@@ -137,9 +139,11 @@ public class HttpUtil {
             // 定义BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
+            StringBuffer stringBuffer = new StringBuffer(2048);
             while ((line = in.readLine()) != null) {
-                result += line;
+                stringBuffer.append(line);
             }
+            result = stringBuffer.toString();
         } catch (Exception e) {
             log.error("发送 POST 请求出现异常", e);
         }
