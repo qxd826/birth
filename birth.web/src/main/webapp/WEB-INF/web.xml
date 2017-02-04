@@ -79,7 +79,7 @@
     <filter>
         <filter-name>AppFilter</filter-name>
         <filter-class>com.qxd.birth.web.filter.AppFilter</filter-class>
-        <!--wensocket-->
+        <!--websocket-->
         <async-supported>true</async-supported>
         <init-param>
             <param-name>notCheckURLList</param-name>

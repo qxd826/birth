@@ -111,7 +111,7 @@ public class SpringContextUtil implements ApplicationContextAware {
      * @return
      * @throws NoSuchBeanDefinitionException
      */
-    public static Object getBean(Class requiredType) throws BeansException {
+    public static <T> T getBean(Class<T> requiredType) throws BeansException {
         return applicationContext.getBean(requiredType);
     }
 }
