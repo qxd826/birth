@@ -22,6 +22,11 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!--初始化Spring上下文环境 SpringContext-->
+    <listener>
+        <listener-class>com.qxd.birth.biz.common.SpringContextUtilListener</listener-class>
+    </listener>
+
     <!--spring mvc配置-->
     <!--这里我们配置了一个名字为spring的servelt
     我们也可以改为任意名字,并且可以配置多个servlet,本质上就是web的一个servlet-->

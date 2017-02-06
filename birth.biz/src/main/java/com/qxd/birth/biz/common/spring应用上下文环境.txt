@@ -1,0 +1,2 @@
+方法一:SpringContextUtil
+方法二:
