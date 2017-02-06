@@ -44,6 +44,7 @@ public final class RSAUtil {
      *
      * @param keyLength 密钥长度，范围：512～2048
      *                  一般1024
+     *
      * @return
      */
     public static KeyPair generateRSAKeyPair(int keyLength) {
@@ -63,6 +64,7 @@ public final class RSAUtil {
      *
      * @param data      需加密数据的byte数据
      * @param publicKey 公钥
+     *
      * @return 加密后的byte型数据
      */
     public static byte[] encryptData(byte[] data, PublicKey publicKey) {
@@ -83,6 +85,7 @@ public final class RSAUtil {
      *
      * @param encryptedData 经过encryptedData()加密返回的byte数据
      * @param privateKey    私钥
+     *
      * @return
      */
     public static byte[] decryptData(byte[] encryptedData, PrivateKey privateKey) {
@@ -101,6 +104,7 @@ public final class RSAUtil {
      *
      * @param data       需加密数据的byte数据
      * @param privateKey 私钥
+     *
      * @return 加密后的byte型数据
      */
     public static byte[] encryptData(byte[] data, PrivateKey privateKey) {
@@ -121,6 +125,7 @@ public final class RSAUtil {
      *
      * @param encryptedData 经过encryptedData()加密返回的byte数据
      * @param publicKey     公钥
+     *
      * @return
      */
     public static byte[] decryptData(byte[] encryptedData, PublicKey publicKey) {
@@ -137,7 +142,9 @@ public final class RSAUtil {
      * 通过公钥byte[](publicKey.getEncoded())将公钥还原，适用于RSA算法
      *
      * @param keyBytes
+     *
      * @return
+     *
      * @throws java.security.NoSuchAlgorithmException
      * @throws java.security.spec.InvalidKeySpecException
      */
@@ -152,7 +159,9 @@ public final class RSAUtil {
      * 通过私钥byte[]将公钥还原，适用于RSA算法
      *
      * @param keyBytes
+     *
      * @return
+     *
      * @throws java.security.NoSuchAlgorithmException
      * @throws java.security.spec.InvalidKeySpecException
      */
@@ -168,7 +177,9 @@ public final class RSAUtil {
      *
      * @param modulus
      * @param publicExponent
+     *
      * @return
+     *
      * @throws java.security.NoSuchAlgorithmException
      * @throws java.security.spec.InvalidKeySpecException
      */
@@ -186,7 +197,9 @@ public final class RSAUtil {
      *
      * @param modulus
      * @param privateExponent
+     *
      * @return
+     *
      * @throws java.security.NoSuchAlgorithmException
      * @throws java.security.spec.InvalidKeySpecException
      */
@@ -203,6 +216,7 @@ public final class RSAUtil {
      * 从字符串中加载公钥
      *
      * @param publicKeyStr 公钥数据字符串
+     *
      * @throws Exception 加载公钥时产生的异常
      */
     public static PublicKey loadPublicKey(String publicKeyStr) throws Exception {
@@ -225,7 +239,9 @@ public final class RSAUtil {
      * 加载时使用的是PKCS8EncodedKeySpec（PKCS#8编码的Key指令）。
      *
      * @param privateKeyStr
+     *
      * @return
+     *
      * @throws Exception
      */
     public static PrivateKey loadPrivateKey(String privateKeyStr) throws Exception {
@@ -248,6 +264,7 @@ public final class RSAUtil {
      * 从文件中输入流中加载公钥
      *
      * @param in 公钥输入流
+     *
      * @throws Exception 加载公钥时产生的异常
      */
     public static PublicKey loadPublicKey(InputStream in) throws Exception {
@@ -264,6 +281,7 @@ public final class RSAUtil {
      * 从文件中加载私钥
      *
      * @return 是否成功
+     *
      * @throws Exception
      */
     public static PrivateKey loadPrivateKey(InputStream in) throws Exception {
@@ -280,7 +298,9 @@ public final class RSAUtil {
      * 读取密钥信息
      *
      * @param in
+     *
      * @return
+     *
      * @throws java.io.IOException
      */
     private static String readKey(InputStream in) throws IOException {
