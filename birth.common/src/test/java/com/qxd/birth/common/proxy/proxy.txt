@@ -1,0 +1,402 @@
+Java 代理模式（一） 静态代理
+代理模式
+　　代理模式的作用是：为其他对象提供一种代理以控制对这个对象的访问。
+
+　　在某些情况下，一个客户不想或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。
+
+代理模式一般涉及到的角色
+
+　　抽象角色：声明真实对象和代理对象的共同接口。
+
+　　代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能够代替真实对象。
+
+　　同时，代理对象可以在执行真实对象操作时，附加其他的操作，相当于对真实对象进行封装。
+
+　　真实角色：代理角色所代表的真实对象，是我们最终要引用的对象。
+
+用实例来说明
+
+首先是抽象角色类，可以定义一个接口或者抽象类：　
+
+/**
+ * 真实对象和代理对象的共同接口
+ *
+ */
+public abstract class Subject
+{
+    public abstract void request();
+}
+之后是真实角色的类，实现接口，并完成实际工作：
+
+/**
+ * 真实角色
+ */
+public class RealSubject extends Subject
+{
+    @Override
+    public void request()
+    {
+        System.out.println("From Real Subject!");
+    }
+}
+然后定义代理角色，内部包含对真实角色对象的引用，并且封装功能：
+
+/**
+ * 代理角色
+ *
+ */
+public class ProxySubject extends Subject
+{
+    //代理角色对象内部含有对真实对象的引用
+    private RealSubject realSubject;
+
+    @Override
+    public void request()
+    {
+        //在真实角色操作之前所附加的操作
+        preRequest();
+        if(null == realSubject)
+        {
+            realSubject = new RealSubject();
+        }
+
+        //真实角色所完成的事情
+        realSubject.request();
+        //在真实角色操作之后所附加的操作
+        postRequest();
+    }
+
+    private void preRequest()
+    {
+        System.out.println("Pre Request.");
+    }
+    private void postRequest()
+    {
+        System.out.println("Post Request");
+    }
+}
+在客户端进行调用时：
+
+/**
+ * 客户类
+ *
+ */
+public class Client
+{
+    public static void main(String[] args)
+    {
+        Subject subject = new ProxySubject();
+        subject.request();
+    }
+}
+问题
+　　如果要按照上述的方式（静态代理）使用代理模式，那么真实角色必须是实现已经存在的，并将其作为代理对象的内部属性。
+
+　　但是实际使用时，一个真实角色必须对应一个代理角色，但如果大量使用会导致类的急剧膨胀；此外，如果事先并不知道真实角色，该如何使用代理呢？这个问题可以通过Java的动态代理类来解决。
+
+Java 代理模式（二） Java中的动态代理
+
+Java中的动态代理
+
+
+
+动态代理类
+
+　　Java动态代理类位于java.lang.reflect包下，一般主要涉及到以下两个类：
+
+　　1.Interface InvocationHandler
+
+　　该接口中仅定义了一个方法：
+
+　　Object invoke(Object proxy, Method method, Object[] args)
+
+　　在实际使用时，第一个参数obj一般是指代理类，method是被代理的方法，如上例中的request()，args为该方法的参数数组（无参时设置为null）。
+
+　　这个抽象方法在代理类中动态实现。
+
+　　2.Proxy
+
+　　该类即为动态代理类，作用类似于上文例子中的ProxySubject，其中主要包含如下内容：
+
+　　protected  Proxy(InvocationHandler h)： 构造函数，用于给内部的invocation handler赋值。
+
+　　static Class<?> getProxyClass(ClassLoader loader, Class<?>... interfaces) ： loader是类装载器，interfaces是真实类所拥有的全部接口的数组。
+
+　　static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)  ：返回代理类的一个实例，返回后的代理类可以当作被代理类使用（可使用被代理类在Subject接口中声明过的方法）。
+
+动态代理类说明
+
+　　所谓Dynamic Proxy是这样一种class：
+
+　　它是在运行时生成的class，在生成它时你必须提供一组interface给它，然后该class就宣称它实现了这些interface。
+
+　　你当然可以把该class的实例当作这些interface中的任何一个来用。
+
+　　当然，这个Dynamic Proxy其实就是一个Proxy，它不会替你做实质性的工作，在生成它的实例时你必须提供一个handler，由它接管实际的工作。
+
+　　在使用动态代理类时，我们必须实现InvocationHandler接口。每一个动态代理类都会有一个与之关联的invocation handler。
+
+　　真正的调用是在invocation handler的invoke()方法里完成的。
+
+实例说明：
+
+　　首先定义抽象角色和真实角色类：
+
+public interface Subject
+{
+    public void request();
+}
+public class RealSubject implements Subject
+{
+    @Override
+    public void request()
+    {
+        System.out.println("From real subject!");
+    }
+}
+　　之后定义一个DynamicSubject类：
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+/**
+ * 该代理类的内部属性是Object类型，实际使用的时候通过该类的构造方法传递进来一个对象。
+ * 该类实现了invoke()方法，该方法中的method.invoke()其实就是调用被代理对象的将要执行的方法，
+ * 方法参数sub表示该方法从属于sub。
+ * 通过动态代理类，我们可以在执行真实对象的方法前后加入自己的一些额外方法
+ *
+ */
+public class DynamicSubject implements InvocationHandler
+{
+
+    //对真实对象的引用
+    private Object sub;
+
+    public DynamicSubject(Object obj)
+    {
+        this.sub = obj;
+
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args)
+            throws Throwable
+    {
+        System.out.println("Before calling: " + method);
+
+        //通过反射来调用方法
+        method.invoke(sub, args);
+
+        System.out.println("After calling: " + method);
+        return null;
+    }
+
+}
+使用的时候：
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+
+public class Client
+{
+    public static void main(String[] args)
+    {
+        RealSubject realSubject = new RealSubject();
+
+        InvocationHandler handler = new DynamicSubject(realSubject);
+
+        Class<?> classType = handler.getClass();
+
+        // 生成代理
+        // 动态生成一个类（实现了指定的接口），生成类的对象，转换成接口类型
+        Subject subject = (Subject) Proxy.newProxyInstance(classType
+                .getClassLoader(), realSubject.getClass().getInterfaces(),
+                handler);
+
+        subject.request();
+        // 调用方法时，转移给handler接管，由其中的invoke()方法实际完成方法执行
+
+        System.out.println(subject.getClass());// 打印出：class $Proxy0
+        // $Proxy0是在运行期间动态生成的一个类
+
+    }
+
+}
+　　通过这种方式，被代理的对象（RealSubject）可以在运行时动态改变，需要控制的接口（Subject接口）可以在运行时改变，控制的方式（DynamicSubject类）也可以动态改变，从而实现了非常灵活的动态代理关系。
+
+动态代理
+
+　　动态代理是指客户通过代理类来调用其他对象的方法。
+
+　　动态代理使用场合：
+
+　　　　调试。
+
+　　　　远程方法调用（RMI）。
+
+动态代理步骤
+
+　　1.创建一个实现接口InvocationHandler的类，它必须实现invoke()方法。
+
+　　2.创建被代理的类以及接口。
+
+　　3.通过Proxy的静态方法newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h)创建一个代理。
+
+　　4.通过代理调用方法。
+
+动态代理实现例子2：　　
+
+import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Vector;
+
+public class VectorProxy implements InvocationHandler
+{
+    private Object proxyObj;
+
+    public VectorProxy(Object obj)
+    {
+        this.proxyObj = obj;
+    }
+
+    public static Object factory(Object obj)
+    {
+        Class<?> classType = obj.getClass();
+
+        return Proxy.newProxyInstance(classType.getClassLoader(),
+                classType.getInterfaces(), new VectorProxy(obj));
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args)
+            throws Throwable
+    {
+        System.out.println("Before calling: " + method);
+
+        // 打印出方法参数
+        if (args != null)
+        {
+            for (Object obj : args)
+            {
+                System.out.println(obj);
+            }
+        }
+
+        // 调用方法
+        Object object = method.invoke(proxyObj, args);
+
+        System.out.println("After calling: " + method);
+
+        return object;
+    }
+
+    public static void main(String[] args)
+    {
+        List v = (List) factory(new Vector());
+
+        System.out.println(v.getClass().getName());
+
+        v.add("New");
+        v.add("York");
+
+        System.out.println(v);
+
+        v.remove(0);
+        System.out.println(v);
+
+    }
+
+}
+动态代理实现例子3：
+
+　　这个例子中定义了一个接口：　
+
+public interface Foo
+{
+    public void doAction();
+}
+这个接口有两个实现类：
+
+public class FooImpl1 implements Foo
+{
+    @Override
+    public void doAction()
+    {
+        System.out.println("From Implement 1 !");
+    }
+}
+
+public class FooImpl2 implements Foo
+{
+    @Override
+    public void doAction()
+    {
+        System.out.println("From Implement 2 !");
+    }
+}
+　　定义invocation handler，其中的set方法使得实际对象是可更换的:
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+public class CommonInvocationHandler implements InvocationHandler
+{
+    private Object target;
+
+    public CommonInvocationHandler()
+    {
+
+    }
+
+    public CommonInvocationHandler(Object obj)
+    {
+        this.target = obj;
+    }
+
+    public void setTarget(Object target)
+    {
+        this.target = target;
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args)
+            throws Throwable
+    {
+        return method.invoke(target, args);
+    }
+
+}
+　　使用：
+
+import java.lang.reflect.Proxy;
+
+public class Demo
+{
+    public static void main(String[] args)
+    {
+        CommonInvocationHandler handler = new CommonInvocationHandler();
+
+        Foo f = null;
+
+        handler.setTarget(new FooImpl1());
+
+        f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(),
+                new Class[] { Foo.class }, handler);
+
+        f.doAction();
+        System.out.println("----------------------------");
+        handler.setTarget(new FooImpl2());
+        f.doAction();
+
+    }
+
+}
+　　程序运行后输出：
+
+From Implement 1 !
+----------------------------
+From Implement 2 !
+
+

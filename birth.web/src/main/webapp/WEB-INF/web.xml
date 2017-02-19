@@ -53,7 +53,7 @@
     <filter>
         <filter-name>SetCharacterEncoding</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <!--wensocket-->
+        <!--websocket-->
         <async-supported>true</async-supported>
         <init-param>
             <param-name>encoding</param-name>
@@ -73,7 +73,7 @@
     <filter>
         <filter-name>WebFilter</filter-name>
         <filter-class>com.qxd.birth.web.filter.WebFilter</filter-class>
-        <!--wensocket-->
+        <!--websocket-->
         <async-supported>true</async-supported>
     </filter>
     <filter-mapping>
