@@ -10,5 +10,7 @@
 
     <!--dal-->
     <import resource="classpath*:dal-context.xml"/>
+    <!--jedis-->
+    <import resource="classpath:jedis-context.xml"/>
 
 </beans>

@@ -1,5 +1,6 @@
 package com.qxd.birth.biz.common;
 
+import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -7,6 +8,7 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * Created by xiangDong.qu on 16/2/16.
  */
+@Slf4j
 public class JedisPoolUtil {
     private static JedisPool slavePool;
 
@@ -78,7 +80,14 @@ public class JedisPoolUtil {
     /**
      * Jeids db select
      */
-    private static Integer dbIndex = 12;
+    private static Integer dbIndex = 1;
+
+    public static void init() {
+        log.info("[Jedis] 初始化建立jedis连接池");
+        createJedisMasterPool();
+        createJedisSlavePool();
+        log.info("[Jedis] 初始化建立jedis连接池结束. masterPool:{},slavePool:{}", masterPool, slavePool);
+    }
 
 
     /**
@@ -120,7 +129,7 @@ public class JedisPoolUtil {
 
         if (slavePool == null)
             poolSlaveInit();
-        Jedis jedis=slavePool.getResource();
+        Jedis jedis = slavePool.getResource();
         jedis.select(dbIndex);
         return jedis;
     }
@@ -173,7 +182,7 @@ public class JedisPoolUtil {
 
         if (masterPool == null)
             poolMasterInit();
-        Jedis jedis=masterPool.getResource();
+        Jedis jedis = masterPool.getResource();
         jedis.select(dbIndex);
         return jedis;
     }
