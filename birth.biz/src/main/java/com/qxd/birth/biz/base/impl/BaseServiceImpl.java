@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by xiangDong.qu on 16/2/2.
+ * Created by xiangDong.qu  on 16/2/2.
  */
 public abstract class BaseServiceImpl implements BaseService {
 
