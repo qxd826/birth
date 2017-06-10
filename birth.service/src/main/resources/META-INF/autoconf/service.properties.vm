@@ -17,4 +17,4 @@ birth.master.jedis.idle=${birth_master_jedis_idle}
 birth.master.jedis.timeout=${birth_master_jedis_timeout}
 birth.master.jedis.maxTotal=${birth_master_jedis_maxTotal}
 #jedis db
-legend.jedis.db.number=${legend_jedis_db_number}
+birth.jedis.db.number=${birth_jedis_db_number}

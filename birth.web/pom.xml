@@ -94,7 +94,7 @@
         </dependency>
         <dependency>
             <groupId>com.qxd.birth</groupId>
-            <artifactId>birth.service</artifactId>
+            <artifactId>birth.server</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -2,7 +2,7 @@
 <config description="">
     <group name="default">
         <!--先读取*.properties文件 如果没值则取默认值-->
-        <property name="birth.app.root" default="${user.home}/"
+        <property name="birth.app.root" default="birth"
                   description="应用部署根目录"/>
         <property name="birth.app.context" defaultValue="birth"
                   description="应用的context name"/>
