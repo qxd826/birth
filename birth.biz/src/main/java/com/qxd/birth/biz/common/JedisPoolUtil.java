@@ -98,7 +98,7 @@ public class JedisPoolUtil {
         // 建立连接池配置参数
         JedisPoolConfig config = new JedisPoolConfig();
 
-        // 设置最大连接数
+       /* // 设置最大连接数
         config.setMaxTotal(slaveMaxTotal == null ? 100 : Integer.parseInt(slaveMaxTotal));
 
         // 设置最大阻塞时间，记住是毫秒数milliseconds
@@ -109,7 +109,7 @@ public class JedisPoolUtil {
 
         // 创建连接池
         slavePool = new JedisPool(config, slaveHost == null ? "115.29.245.103" : slaveHost, slavePort == null ? 6381 : Integer.parseInt(slavePort), slaveTimeout == null ? 3000 : Integer.parseInt(slaveTimeout), slavePassword == null ? "legend6381" : slavePassword);
-
+*/
     }
 
     /**
@@ -151,7 +151,7 @@ public class JedisPoolUtil {
         // 建立连接池配置参数
         JedisPoolConfig config = new JedisPoolConfig();
 
-        // 设置最大连接数
+      /*  // 设置最大连接数
         config.setMaxTotal(masterMaxTotal == null ? 100 : Integer.parseInt(masterMaxTotal));
 
         // 设置最大阻塞时间，记住是毫秒数milliseconds
@@ -162,7 +162,7 @@ public class JedisPoolUtil {
 
         // 创建连接池
         masterPool = new JedisPool(config, masterHost == null ? "115.29.245.103" : masterHost, masterPort == null ? 6380 : Integer.parseInt(masterPort), masterTimeout == null ? 3000 : Integer.parseInt(masterTimeout), masterPassword == null ? "legend6381" : masterPassword);
-
+*/
     }
 
     /**
