@@ -16,7 +16,7 @@
         <module>birth.biz</module>
         <module>birth.dal</module>
         <module>birth.common</module>
-        <module>birth.service</module>
+        <module>birth.server</module>
         <module>birth.client</module>
     </modules>
 
