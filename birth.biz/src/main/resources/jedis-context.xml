@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	   ">
 
-	<!--    <bean id="jedis" class="com.qxd.birth.biz.common.JedisPoolUtil" init-method="init">
+    <bean id="jedis" class="com.qxd.birth.biz.common.JedisPoolUtil" init-method="init">
             <property name="slaveHost" value="${birth.slave.jedis.host}"/>
             <property name="slavePort" value="${birth.slave.jedis.port}"/>
             <property name="slavePassword" value="${birth.slave.jedis.pwd}"/>
@@ -19,5 +19,5 @@
             <property name="masterTimeout" value="${birth.master.jedis.timeout}"/>
             <property name="masterMaxTotal" value="${birth.master.jedis.maxTotal}"/>
             <property name="dbIndex" value="${birth.jedis.db.number}"/>
-        </bean>-->
+    </bean>
 </beans>
