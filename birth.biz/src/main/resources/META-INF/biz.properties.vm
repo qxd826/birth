@@ -1,14 +1,24 @@
 #vm真实模板
-birth.slave.jedis.host= ${birth_slave_jedis_host}
-birth.slave.jedis.port = ${birth_slave_jedis_port}
-birth.slave.jedis.pwd= ${birth_slave_jedis_pwd}
-birth.slave.jedis.idle = ${birth_slave_jedis_idle}
-birth.slave.jedis.timeout= ${birth_slave_jedis_timeout}
-birth.slave.jedis.maxTotal = ${birth_slave_jedis_maxTotal}
-birth.master.jedis.host= ${birth_master_jedis_host}
-birth.master.jedis.port = ${birth_master_jedis_port}
-birth.master.jedis.pwd= ${birth_master_jedis_pwd}
-birth.master.jedis.idle = ${birth_master_jedis_idle}
-birth.master.jedis.timeout= ${birth_master_jedis_timeout}
-birth.master.jedis.maxTotal = ${birth_master_jedis_maxTotal}
-birth.jedis.db.number= ${birth_jedis_db_number}
+#jedis
+birth.slave.jedis.host=${birth_slave_jedis_host}
+birth.slave.jedis.port=${birth_slave_jedis_port}
+birth.slave.jedis.pwd=${birth_slave_jedis_pwd}
+birth.slave.jedis.idle=${birth_slave_jedis_idle}
+birth.slave.jedis.timeout=${birth_slave_jedis_timeout}
+birth.slave.jedis.maxTotal=${birth_slave_jedis_maxTotal}
+birth.master.jedis.host=${birth_master_jedis_host}
+birth.master.jedis.port=${birth_master_jedis_port}
+birth.master.jedis.pwd=${birth_master_jedis_pwd}
+birth.master.jedis.idle=${birth_master_jedis_idle}
+birth.master.jedis.timeout=${birth_master_jedis_timeout}
+birth.master.jedis.maxTotal=${birth_master_jedis_maxTotal}
+birth.jedis.db.number=${birth_jedis_db_number}
+#quartz
+birth.quartz.run=${birth_quartz_run}
+#dubbo
+#注册地址
+birth.dubbo.address=${birth_dubbo_address}
+#是否检查依赖任务
+birth.dubbo.consumer.check=${birth_dubbo_consumer_check}
+#对外注册端接口
+birth.dubbo.port=${birth_dubbo_port}

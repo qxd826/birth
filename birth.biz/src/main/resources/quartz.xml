@@ -23,7 +23,7 @@
                 <ref bean="testQuartz"/>
             </list>
         </property>
-        <property name="autoStartup" value="${quartz.run}"/>
+        <property name="autoStartup" value="${birth.quartz.run}"/>
         <property name="quartzProperties">
             <props>
                 <prop key="org.quartz.scheduler.skipUpdateCheck">true</prop>

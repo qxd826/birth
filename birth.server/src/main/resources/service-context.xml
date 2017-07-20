@@ -2,35 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-        http://code.alibabatech.com/schema/dubbo
-		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
     <context:property-placeholder order="30" ignore-unresolvable="true"
                                   location="classpath:service-context.properties"/>
     <!--biz-->
     <import resource="classpath*:biz-context.xml"/>
 
-    <!--定时器配置-->
-    <import resource="classpath:quartz.xml"/>
+    <!--dubbo provider-->
+    <import resource="classpath:dubbo-provider.xml"/>
 
-    <!--beans-->
-    <import resource="classpath:beans-config.xml"/>
-
-    <!-- dubbo 配置 -->
-    <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="birth" organization="qxd" owner="qxd"/>
-    <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="121.40.33.99:2181"/>
-    <!--从注册中心发现监控中心地址-->
-    <dubbo:monitor protocol="registry"/>
-
-    <dubbo:consumer check="false"/>
-    <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20881"/>
-
-    <!-- test provider-->
-    <dubbo:service interface="com.qxd.birth.client.TestRpc" ref="testRpc" version="1.0.0" owner="xiangdong.qu"/>
 </beans>

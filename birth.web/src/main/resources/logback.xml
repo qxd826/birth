@@ -15,7 +15,7 @@
     -->
     <appender name="CACHE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--存放地址-->
-        <file>/data/birth/logs/cache.log</file>
+        <file>logs/cache.log</file>
         <!--追加模式-->
         <append>true</append>
         <!--有多种策略
@@ -25,7 +25,7 @@
         <!--时间分包策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--分包时间到天(dd)所以默认是1天)-->
-            <fileNamePattern>/data/birth/logs/cache.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/cache.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!--控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每个月滚动，且<maxHistory>是6，则只保存最近6个月的文件，
             删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除。-->
             <maxHistory>5</maxHistory>
@@ -36,10 +36,10 @@
         </encoder>
     </appender>
     <appender name="COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/common.log</file>
+        <file>logs/common.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/common.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/common.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -47,10 +47,10 @@
         </encoder>
     </appender>
     <appender name="CUS_ASSIGN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/customerAssign.log</file>
+        <file>logs/customerAssign.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/customerAssign.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/customerAssign.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -58,10 +58,10 @@
         </encoder>
     </appender>
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/error.log</file>
+        <file>logs/error.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
@@ -72,10 +72,10 @@
         </encoder>
     </appender>
     <appender name="MONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/monitor.log</file>
+        <file>logs/monitor.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -83,10 +83,10 @@
         </encoder>
     </appender>
     <appender name="REMOTE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/remote.log</file>
+        <file>logs/remote.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/remote.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -94,10 +94,10 @@
         </encoder>
     </appender>
     <appender name="SCHEDULE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/schedule.log</file>
+        <file>logs/schedule.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/schedule.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/schedule.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -105,10 +105,10 @@
         </encoder>
     </appender>
     <appender name="SPRING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/birth/logs/spring.log</file>
+        <file>logs/spring.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/birth/logs/spring.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/spring.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>${LOG_CHARSET}</charset>
@@ -150,6 +150,11 @@
         <level value="INFO" />
         <appender-ref ref="REMOTE" />
         <appender-ref ref="ERROR" />
+    </logger>
+    <logger name="com.alibaba" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="COMMON" />
+        <appender-ref ref="CONSOLE" />
     </logger>
     <logger name="org.mybatis.spring" additivity="false">
         <level value="INFO" />

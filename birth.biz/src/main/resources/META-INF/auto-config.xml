@@ -2,20 +2,31 @@
 <config description="">
     <group name="biz">
         <!--先读取*.properties文件 如果没值则取默认值-->
-        <property name="birth.slave.jedis.host" defaultValue="180.76.170.17" description="读redisIP"/>
+        <!--定时器配置-->
+        <property name="birth.quartz.run" defaultValue="false" description="定时器"/>
+        <!--主redis配置-->
+        <property name="birth.slave.jedis.host" defaultValue="127.0.0.1" description="读redisIP"/>
         <property name="birth.slave.jedis.port" defaultValue="6379" description="redis端口"/>
         <property name="birth.slave.jedis.pwd" defaultValue="123456" description="redis密码"/>
         <property name="birth.slave.jedis.idle" defaultValue="50" description="并发数"/>
         <property name="birth.slave.jedis.timeout" defaultValue="3000" description="超时时间"/>
         <property name="birth.slave.jedis.maxTotal" defaultValue="100" description="最大连接数"/>
-
-        <property name="birth.master.jedis.host" defaultValue="180.76.170.17" description="写redisIP"/>
+        <!--从redis配置-->
+        <property name="birth.master.jedis.host" defaultValue="127.0.0.1" description="写redisIP"/>
         <property name="birth.master.jedis.port" defaultValue="6379" description="redis端口"/>
         <property name="birth.master.jedis.pwd" defaultValue="123456" description="redis密码"/>
         <property name="birth.master.jedis.idle" defaultValue="50" description="并发数"/>
         <property name="birth.master.jedis.timeout" defaultValue="3000" description="超时时间"/>
         <property name="birth.master.jedis.maxTotal" defaultValue="100" description="最大连接数"/>
+        <!--redis分区-->
         <property name="birth.jedis.db.number" defaultValue="1" description="Redis 数据库"/>
+        <!--dubbo配置-->
+        <!--注册地址-->
+        <property name="birth.dubbo.address" defaultValue="116.62.62.121:2180,116.62.62.121:2181" description="dubbo zookeeper注册地址"/>
+        <!--是否检查依赖任务-->
+        <property name="birth.dubbo.consumer.check" defaultValue="false" description="检查服务"/>
+        <!--对外注册端接口-->
+        <property name="birth.dubbo.port" defaultValue="20880" description="dubbo注册地址"/>
     </group>
     <script>
         <generate template="biz.properties.vm" destfile="biz.properties" charset="UTF-8"/>

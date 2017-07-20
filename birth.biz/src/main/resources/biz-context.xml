@@ -12,5 +12,8 @@
     <import resource="classpath*:dal-context.xml"/>
     <!--jedis-->
     <import resource="classpath:jedis-context.xml"/>
-
+    <!--dubbo-->
+    <import resource="classpath:dubbo-context.xml"/>
+    <!--定时器配置-->
+    <import resource="classpath:quartz.xml"/>
 </beans>
