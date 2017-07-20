@@ -151,8 +151,8 @@
         <appender-ref ref="REMOTE" />
         <appender-ref ref="ERROR" />
     </logger>
-    <logger name="com.alibaba" additivity="false">
-        <level value="DEBUG" />
+    <logger name="com.alibaba.dubbo" additivity="false">
+        <level value="INFO" />
         <appender-ref ref="COMMON" />
         <appender-ref ref="CONSOLE" />
     </logger>
