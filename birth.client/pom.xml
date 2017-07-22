@@ -13,6 +13,7 @@
 
     <build>
         <plugins>
+            <!--源码打包-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -52,13 +53,13 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>maven-snapshots</id>
+            <id>qxd-maven-snapshots</id>
             <name>maven-snapshots</name>
             <url>http://116.62.62.121:8081/repository/maven-snapshots</url>
         </snapshotRepository>
 
         <repository>
-            <id>maven-releases</id>
+            <id>qxd-maven-releases</id>
             <name>maven-releases</name>
             <url>http://116.62.62.121:8081/repository/maven-releases</url>
         </repository>

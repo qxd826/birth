@@ -1,10 +1,7 @@
 package com.qxd.birth.biz.test;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -38,6 +35,11 @@ public class BaseCaseTest {
     @AfterClass
     public static void afterClass() {
         log.info("afterClass");
+    }
+
+    @Test
+    public void test(){
+
     }
 }
 
