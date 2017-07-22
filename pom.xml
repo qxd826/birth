@@ -5,7 +5,7 @@
 
     <groupId>com.qxd.birth</groupId>
     <artifactId>birth</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <!-- 父 module 打包为pom-->
     <packaging>pom</packaging>
 
@@ -26,11 +26,12 @@
         <org.springframework-version>4.0.5.RELEASE</org.springframework-version>
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <birth.client.version>1.0.0-SNAPSHOT</birth.client.version>
-        <project.version>1.0</project.version>
+        <project.version>1.0.0</project.version>
     </properties>
 
     <build>
         <plugins>
+            <!--设置java编译版本号,在ide里不需要设置,貌似会默认使用ide默认的,项目配置优先ide-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -47,6 +48,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <!--资源依赖的copy-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
