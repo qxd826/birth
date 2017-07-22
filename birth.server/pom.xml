@@ -4,6 +4,7 @@
         <artifactId>birth</artifactId>
         <groupId>com.qxd.birth</groupId>
         <version>1.0.0</version>
+        <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>birth.server</artifactId>
