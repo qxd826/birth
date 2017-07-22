@@ -27,7 +27,22 @@
         <spring.security.version>3.1.4.RELEASE</spring.security.version>
         <birth.client.version>1.0.0-SNAPSHOT</birth.client.version>
         <project.version>1.0.0</project.version>
+        <qxd.core.version>1.0.0-SNAPSHOT</qxd.core.version>
     </properties>
+
+    <!--指定maven仓库,可以配置在setting.xml,不在此处配置-->
+    <repositories>
+        <repository>
+            <id>qxd-maven-public</id>
+            <url>http://116.62.62.121:8081/repository/qxd.com</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -442,6 +457,11 @@
                 <groupId>org.jboss.netty</groupId>
                 <artifactId>netty</artifactId>
                 <version>3.2.5.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qxd.core</groupId>
+                <artifactId>core</artifactId>
+                <version>${qxd.core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

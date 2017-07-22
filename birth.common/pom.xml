@@ -65,5 +65,10 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.qxd.core</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
     </dependencies>
 </project>
