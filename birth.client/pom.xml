@@ -23,6 +23,7 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
+                        <phase>compile</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
                         </goals>
