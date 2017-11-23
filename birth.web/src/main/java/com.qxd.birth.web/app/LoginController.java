@@ -27,7 +27,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/loginIn/{account}/{password}", method = RequestMethod.GET)
     @ResponseBody
-    public Result login(@PathVariable String account, @PathVariable String password) {
+    public Result login(@PathVariable("account") String account, @PathVariable("password") String password) {
         return Result.wrapSuccessfulResult("true loginIn:" + account + "  password:" + password);
     }
 

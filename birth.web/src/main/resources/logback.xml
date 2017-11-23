@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <configuration debug="false">
-    <property name="COMMON_PATTERN"	value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n" />
-    <property name="LOG_CHARSET" value="UTF-8" />
-
+    <!--变量定义和使用-->
+    <!---->
+    <property name="COMMON_PATTERN"
+              value="[%d{'MM-dd HH:mm:ss,SSS',GMT+8:00}] %-5p [%.10t][%X{CU}] %logger{36}[%L] - %m%n"/>
+    <property name="LOG_CHARSET" value="UTF-8"/>
+    <!---->
+    <property resource="classpath:application.properties"/>
     <!--
         appender 包括
         RollingFileAppender,滚动记录文件
@@ -116,7 +120,7 @@
         </encoder>
     </appender>
     <!--工作台输出-->
-    <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>${LOG_CHARSET}</charset>
             <pattern>${COMMON_PATTERN}</pattern>
@@ -124,66 +128,69 @@
     </appender>
 
     <logger name="com.qxd">
-        <level value="INFO" />
-        <appender-ref ref="COMMON" />
+        <level value="INFO"/>
+        <appender-ref ref="COMMON"/>
     </logger>
+    <!--additivity的作用在于 children-logger是否使用 rootLogger配置的appender进行输出。
+        false：表示只用当前logger的appender-ref。
+        true：表示当前logger的appender-ref和rootLogger的appender-ref都有效。-->
     <logger name="java.sql" additivity="false">
-        <level value="DEBUG" />
-        <appender-ref ref="DB" />
-        <appender-ref ref="ERROR" />
+        <level value="DEBUG"/>
+        <appender-ref ref="DB"/>
+        <appender-ref ref="ERROR"/>
     </logger>
     <logger name="java.sql.ResultSet" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="DB" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="DB"/>
+        <appender-ref ref="ERROR"/>
     </logger>
     <logger name="net.sf.ehcache">
-        <level value="ERROR" />
+        <level value="ERROR"/>
     </logger>
     <logger name="org.apache">
-        <level value="WARN" />
+        <level value="WARN"/>
     </logger>
     <logger name="org.apache.velocity">
-        <level value="INFO" />
+        <level value="INFO"/>
     </logger>
     <logger name="org.directwebremoting" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="REMOTE" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="REMOTE"/>
+        <appender-ref ref="ERROR"/>
     </logger>
     <logger name="com.alibaba.dubbo" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="COMMON" />
-        <appender-ref ref="CONSOLE" />
+        <level value="INFO"/>
+        <appender-ref ref="COMMON"/>
+        <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.mybatis.spring" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="SPRING" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="SPRING"/>
+        <appender-ref ref="ERROR"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.springframework" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="SPRING" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="SPRING"/>
+        <appender-ref ref="ERROR"/>
     </logger>
     <logger name="org.springframework.security">
-        <level value="ERROR" />
+        <level value="ERROR"/>
     </logger>
     <logger name="org.springframework.scheduling" additivity="false">
-        <level value="INFO" />
-        <appender-ref ref="SCHEDULE" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="SCHEDULE"/>
+        <appender-ref ref="ERROR"/>
     </logger>
     <logger name="org.mitre">
-        <level value="info" />
+        <level value="info"/>
     </logger>
 
     <root>
-        <level value="INFO" />
-        <appender-ref ref="COMMON" />
-        <appender-ref ref = "CONSOLE" />
-        <appender-ref ref="ERROR" />
+        <level value="INFO"/>
+        <appender-ref ref="COMMON"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ERROR"/>
     </root>
 
 </configuration>
